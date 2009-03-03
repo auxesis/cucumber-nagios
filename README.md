@@ -16,20 +16,20 @@ As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-
 Setting up a project
 ====================
 
-To set up a standalone cucumber-nagios project, run:
+To set up a standalone `cucumber-nagios` project, run:
 
     cucumber-nagios-gen project <project-name>
 
-This will spit out a bunch of files in the directory specified as <project-name>. 
+This will spit out a bunch of files in the directory specified as `<project-name>`. 
 
-Check the README within this directory for specific instructions for managing
+Check the `README` within this directory for specific instructions for managing
 the project. 
 
 
 Writing Features
 ================
 
-Within your project, I suggest you put your features under under features/$fqdn/$name.feature.
+Within your project, I suggest you put your features under under `features/$fqdn/$name.feature`.
 
 You'll want to have a read of the Cucumber documentation, however 
 your tests will look something like this:
@@ -45,10 +45,10 @@ your tests will look something like this:
         Then I should see "www.wikipedia.org"
 
 There's a collection of steps that will cover most of the things you'll be 
-testing for in features/steps/webrat_steps.rb. 
+testing for in `features/steps/webrat_steps.rb`. 
 
 You can write custom steps for testing specific output and behaviour, e.g.
-in features/smh.com.au/smh.feature: 
+in `features/smh.com.au/smh.feature`: 
 
     Feature: smh.com.au
       It should be up
@@ -60,7 +60,7 @@ in features/smh.com.au/smh.feature:
         And there should be a section named "Opinion"
 
 There aren't steps for "Then I should see site navigation", so you have to 
-write one yourself. :-) In features/smh.com.au/steps/smh_steps.rb: 
+write one yourself. :-) In `features/smh.com.au/steps/smh_steps.rb`: 
 
     Then /^I should see site navigation$/ do                                                                    
       doc = Nokogiri::HTML(response.body.to_s)                                                                  
@@ -70,7 +70,7 @@ write one yourself. :-) In features/smh.com.au/steps/smh_steps.rb:
 You can use Nokogiri for testing responses with XPath matchers and CSS 
 selectors. 
 
-I suggest you use bin/cucumber directly so you can get better feedback when 
+I suggest you use `bin/cucumber` directly so you can get better feedback when 
 writing your tests:
 
     bin/cucumber --require bin/common.rb \
@@ -81,11 +81,11 @@ writing your tests:
 Running
 =======
 
-Invoke the cucumber feature with the cucumber-nagios script: 
+Invoke the Cucumber feature with the `cucumber-nagios` script: 
 
     bin/cucumber-nagios features/smh.com.au/smh.feature
 
-cucumber-nagios can be run from anywhere: 
+`cucumber-nagios` can be run from anywhere: 
 
     /path/to/bin/cucumber-nagios /path/to/features/smh/smh.feature
 
@@ -109,8 +109,8 @@ you'll get multiple lines of output for a test:
     Critical: 1, Warning: 0, 2 okay | passed=2, failed=1, total=3
     Critical: 1, Warning: 0, 4 okay | passed=4, failed=1, total=5
 
-I assume Nagios will only read the last line, so this might be an ok behaviour
-when you want to test for an aggregate of failures across a site.
+That said, Nagios should only read the last line, so this might be an ok 
+behaviour when you want to test for an aggregate of failures across a site.
 
 
 

@@ -91,7 +91,7 @@ cucumber-nagios can be run from anywhere:
 
 It should return a standard Nagios-formatted response string: 
 
-    Critical: 0, Warning: 0, 2 okay | passed=2, failed=0.0, total=2
+    Critical: 0, Warning: 0, 2 okay | passed=2, failed=0, total=2
 
 Steps that fail will show up in the "Critical" total, and steps that pass 
 show up in the "okay" total. 
@@ -106,8 +106,8 @@ Caveats
 You may want to think about keeping to one scenario to a file, otherwise 
 you'll get multiple lines of output for a test:
 
-    Critical: 1, Warning: 0, 2 okay | value=2.000000;;;;
-    Critical: 1, Warning: 0, 4 okay | value=4.000000;;;;
+    Critical: 1, Warning: 0, 2 okay | passed=2, failed=1, total=3
+    Critical: 1, Warning: 0, 4 okay | passed=4, failed=1, total=5
 
 I assume Nagios will only read the last line, so this might be an ok behaviour
 when you want to test for an aggregate of failures across a site.

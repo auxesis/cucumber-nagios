@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.2.5'
+  s.version = '0.2.6'
   s.date = '2009-03-04'
   
   s.summary = "web app testing plugin for Nagios using Cucumber/Webrat/Mechanize"
@@ -12,7 +12,8 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
 
   s.add_dependency('templater', '>= 0.5')
-  s.add_dependency('rake', '>= 0.8')
+  s.add_dependency('rake', '>= 0.8.3')
+  s.add_dependency('rspec', '>= 1.1.12')
  
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)

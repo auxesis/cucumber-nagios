@@ -8,12 +8,12 @@ module Nagios
       @passed = []
     end
 
-    def step_passed(*args)
-      @passed << true
+    def step_passed(step, name, params)
+      @passed << step
     end
 
-    def step_failed(*args)
-      @failed << true
+    def step_failed(step, name, params)
+      @failed << step
     end
 
     def scenario_executed(scenario)

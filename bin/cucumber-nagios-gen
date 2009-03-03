@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'templater'
+
+module CucumberNagiosGenerators
+
+  extend Templater::Manifold
+
+  class ProjectGenerator < Templater::Generator
+    def self.source_root
+      File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'project')
+    end
+
+    def destination_root
+      # takes :name from first_argument
+      File.join(@destination_root, name)
+    end
+
+    desc "Generate a new self-contained cucumber-nagios project."
+    first_argument :name, :required => true, :desc => "Project name"
+
+    file '.gitignore', '.gitignore'
+    file '.bzrignore', '.bzrignore'
+    glob!
+
+  end
+
+  desc "Generate a cucumber-nagios project."
+  add :project, ProjectGenerator
+
+end
+
+
+CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', '0.1', ARGV

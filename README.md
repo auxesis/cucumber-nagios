@@ -1,23 +1,36 @@
-Dependencies
-============
+cucumber-nagios
+===============
 
- - ruby1.8
- - rake
- - rubygems
+cucumber-nagios allows you to write high-level behavioural tests of web 
+application, and plug the results into Nagios. 
+
+As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-with-cucumber): 
+
+    “Instead of writing boring monitoring plugins from scratch, 
+    you can now do behavior driven ops!
+
+    Transform from a grumpy, misanthropic sysadmin to a hipster, 
+    agile developer instantly.”
 
 
-Setting up
-==========
 
-To install dependencies, run:
+Setting up a project
+====================
 
-    rake deps
+To set up a standalone cucumber-nagios project, run:
+
+    cucumber-nagios-gen project <project-name>
+
+This will spit out a bunch of files in the directory specified as <project-name>. 
+
+Check the README within this directory for specific instructions for managing
+the project. 
 
 
 Writing Features
 ================
 
-I suggest you put your features under under features/$fqdn/$name.feature.
+Within your project, I suggest you put your features under under features/$fqdn/$name.feature.
 
 You'll want to have a read of the Cucumber documentation, however 
 your tests will look something like this:
@@ -71,7 +84,7 @@ Running
 
 Invoke the cucumber feature with the cucumber-nagios script: 
 
-    bin/cucumber-nagios features/myblog.feature
+    bin/cucumber-nagios features/smh.com.au/smh.feature
 
 cucumber-nagios can be run from anywhere: 
 
@@ -79,15 +92,13 @@ cucumber-nagios can be run from anywhere:
 
 It should return a standard Nagios-formatted response string: 
 
-    Critical: 0, Warning: 0, 2 okay | value=2.000000;;;;
+    Critical: 0, Warning: 0, 2 okay | passed=2, failed=0.0, total=2
 
 Steps that fail will show up in the "Critical" total, and steps that pass 
 show up in the "okay" total. 
 
-The value printed at the end is a total of the steps completed minus the 
-failing steps: 
-
-    Critical: 1, Warning: 0, 2 okay | value=2.000000;;;;
+The value printed at the end is in Nagios's Performance Data format, so it
+can be graphed and the like.
 
 
 Caveats

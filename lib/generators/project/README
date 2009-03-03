@@ -1,0 +1,45 @@
+THINGS YOU SHOULD DO
+====================
+
+ 1. freeze your project
+ 2. version control your project
+
+
+Freezing
+========
+
+Freezing your dependencies allows you to drop your cucumber-nagios project to
+any machine and have it run. Its only requirement is Ruby and Rake.
+
+To freeze your project, run:
+
+ $ rake deps
+
+
+Redeploying
+===========
+
+Just run the freezer again: 
+
+ $ rake deps
+
+
+Version control
+===============
+
+I highly recommend storing your cucumber-nagios features in a version control
+system. 
+
+To get up and running with git: 
+
+ $ git init
+ $ git add .
+ $ git commit -m 'created cucumber-nagios project'
+
+To get up and running with bzr:
+
+ $ bzr init
+ $ bzr add
+ $ bzr commit -m 'created cucumber-nagios project'
+
+.bzrignore and .gitignores are created when you generate your project.

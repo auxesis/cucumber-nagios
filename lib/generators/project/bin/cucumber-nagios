@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ "$#" != "1" ]; then
+	echo "Usage: $0 <feature>"
+	exit 99
+fi
+
+dirname=$(dirname $0)
+feature=$1
+
+if [ ! -e "$feature" ]; then
+	echo "Error: feature file doesn't exist!"
+	exit 98
+fi
+
+$dirname/cucumber --require $dirname/common.rb \
+				 					--require features/ \
+				 					--format Nagios::NagiosFormatter \
+				 					$feature
+retval=$?
+
+if [ "$retval" -eq "1" ]; then
+	exit 2
+else
+	exit $retval
+fi

@@ -18,9 +18,15 @@ end
 
 desc "freeze deps"
 task :deps do 
-  deps = ['cucumber', 'webrat', 'mechanize']
-  deps.each do |dep|
+
+  deps = {'cucumber' => ">= 0.1.16", 
+          'webrat' => ">= 0.4.2", 
+          'mechanize' => ">= 0.9.1", 
+          'rspec' => ">= 1.1.12"}
+
+  deps.each_pair do |dep, version|
     puts "installing #{dep}"
-    system("gem install #{dep} -i gems --no-rdoc --no-ri")
+    system("gem install #{dep} --version '#{version}' -i gems --no-rdoc --no-ri")
   end
+
 end

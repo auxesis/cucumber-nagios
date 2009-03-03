@@ -6,3 +6,4 @@
 gems/specifications/*
 gems/gems/*
 gems/bin/*
+cucumber-nagios*.gem

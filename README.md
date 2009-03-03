@@ -24,7 +24,7 @@ your tests will look something like this:
 
     Feature: google.com.au
       It should be up
-  		And I should be able to search for things
+      And I should be able to search for things
     
       Scenario: Searching for things
         Given I visit "http://www.google.com"
@@ -62,8 +62,8 @@ I suggest you use bin/cucumber directly so you can get better feedback when
 writing your tests:
 
     bin/cucumber --require bin/common.rb \
-  							 --require features/ 
-  							 features/smh/smh.feature
+                 --require features/ 
+                 features/smh/smh.feature
 
 
 Running
@@ -75,7 +75,7 @@ Invoke the cucumber feature with the cucumber-nagios script:
 
 cucumber-nagios can be run from anywhere: 
 
-  	/path/to/bin/cucumber-nagios /path/to/features/smh/smh.feature
+    /path/to/bin/cucumber-nagios /path/to/features/smh/smh.feature
 
 It should return a standard Nagios-formatted response string: 
 
@@ -97,7 +97,7 @@ You may want to think about keeping to one scenario to a file, otherwise
 you'll get multiple lines of output for a test:
 
     Critical: 1, Warning: 0, 2 okay | value=2.000000;;;;
-  	Critical: 1, Warning: 0, 4 okay | value=4.000000;;;;
+    Critical: 1, Warning: 0, 4 okay | value=4.000000;;;;
 
 I assume Nagios will only read the last line, so this might be an ok behaviour
 when you want to test for an aggregate of failures across a site.

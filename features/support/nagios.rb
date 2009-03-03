@@ -22,7 +22,9 @@ module Nagios
       message += "Critical: #{@failed.size}, "
       message += "Warning: 0, "
       message += "#{@passed.size} okay"
-      message += " | value=#{sprintf("%.6f", (@total - @failed.size))};;;;"
+      # nagios performance data
+      message += " | passed=#{@passed.size}"
+      message += ", failed=#{@failed.size}, total=#{@total}"
       puts message
     end
   end

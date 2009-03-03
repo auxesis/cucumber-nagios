@@ -1,0 +1,6 @@
+.DS_Store
+*~
+.#*
+gems/specifications/*
+gems/gems/*
+gems/bin/*

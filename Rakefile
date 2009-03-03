@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby 
 
 require 'rubygems'
-require 'bin/common'
-Gem.clear_paths
-Gem.path.unshift(File.join(File.dirname(__FILE__), 'gems'))
 
 begin 
   require 'cucumber/rake/task'

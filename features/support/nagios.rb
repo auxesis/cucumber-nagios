@@ -4,12 +4,8 @@ require 'rubygems'
 module Nagios
   class NagiosFormatter
     def initialize(io, step_mother, options={})
-      # We don't care about these - we're just twittering!
       @failed = []
       @passed = []
-    end
-
-    def scenario_executing(scenario)
     end
 
     def step_passed(*args)

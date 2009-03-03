@@ -13,7 +13,6 @@ As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-
     agile developer instantly.”
 
 
-
 Setting up a project
 ====================
 

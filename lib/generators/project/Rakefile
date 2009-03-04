@@ -24,6 +24,8 @@ task :deps do
           'mechanize' => ">= 0.9.1", 
           'rspec' => ">= 1.1.12"}
 
+  puts "\ninstalling dependencies. this will take a few minutes."
+
   deps.each_pair do |dep, version|
     puts "\ninstalling #{dep} (#{version})"
     system("gem install #{dep} --version '#{version}' -i gems --no-rdoc --no-ri")

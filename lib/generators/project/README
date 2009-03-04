@@ -23,12 +23,21 @@ Just run the freezer again:
 
  $ rake deps
 
+Writing features
+================
+
+Once you've set up a project, you can use the bin/cucumber-nagios-gen command
+to generate new features. It takes two arguments: the site you're testing, and 
+feature you're testing: 
+
+  bin/cucumber-nagios-gen feature gnome.org navigation
+
 
 Version control
 ===============
 
 I highly recommend storing your cucumber-nagios features in a version control
-system. 
+system!
 
 To get up and running with git: 
 

@@ -1,26 +1,27 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
-if [ "$#" != "1" ]; then
-	echo "Usage: $0 <feature>"
-	exit 99
-fi
+unless ARGV[0]
+  puts "Usage: #{__FILE__} <feature>"
+  exit 99
+end
 
-dirname=$(dirname $0)
-feature=$1
+__DIR__ = File.expand_path(File.dirname(__FILE__))
 
-if [ ! -e "$feature" ]; then
-	echo "Error: feature file doesn't exist!"
-	exit 98
-fi
+feature = ARGV[0]
+unless File.exists?(feature)
+  feature = File.join(__DIR__, '..', 'features', ARGV[0]) 
+end
 
-$dirname/cucumber --require $dirname/common.rb \
-				 					--require features/ \
-				 					--format Nagios::NagiosFormatter \
-				 					$feature
-retval=$?
+unless File.exist?(feature)
+  puts "Error: feature file doesn't exist!"
+  exit 98
+end
 
-if [ "$retval" -eq "1" ]; then
-	exit 2
-else
-	exit $retval
-fi
+command = "#{__DIR__}/cucumber"
+command += " --require #{__DIR__}/common.rb"
+command += " --require features/"
+command += " --format Nagios::NagiosFormatter"
+command += " #{feature}"
+
+system(command) ? exit(0) : exit(2)
+

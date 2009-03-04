@@ -26,12 +26,41 @@ Check the `README` within this directory for specific instructions for managing
 the project. 
 
 
-Writing Features
+Freezing 
+========
+
+Freezing your dependencies into your project allows you to drop your 
+`cucumber-nagios` project to any machine and have it run. Its only requirement is 
+Ruby and Rake.
+
+To freeze your project, within your project directory run:
+
+    $ rake deps
+
+Redeploying
+===========
+
+Once you've copied your project around, Just run the freezer again: 
+
+    $ rake deps
+
+Writing features
 ================
 
-Within your project, I suggest you put your features under under `features/$fqdn/$name.feature`.
+Once you've set up a project, you can use the `bin/cucumber-nagios-gen` command
+to generate new features. It takes two arguments: the site you're testing, and 
+feature you're testing: 
 
-You'll want to have a read of the Cucumber documentation, however 
+    bin/cucumber-nagios-gen feature gnome.org navigation
+
+This will spit out two files: 
+
+    features/gnome.org/navigation.feature
+    features/gnome.org/steps/navigation_steps.rb
+
+
+As for writing features, you'll want to have a read of the 
+[Cucumber documentation](http://wiki.github.com/aslakhellesoy/cucumber), however
 your tests will look something like this:
 
     Feature: google.com.au
@@ -113,4 +142,22 @@ That said, Nagios should only read the last line, so this might be an ok
 behaviour when you want to test for an aggregate of failures across a site.
 
 
+Version control
+===============
 
+I highly recommend storing your cucumber-nagios projects in a version control
+system!
+
+To get up and running with git: 
+
+    $ git init
+    $ git add .
+    $ git commit -m 'created cucumber-nagios project'
+
+To get up and running with bzr:
+
+    $ bzr init
+    $ bzr add
+    $ bzr commit -m 'created cucumber-nagios project'
+
+.bzrignore and .gitignores are created when you generate a project.

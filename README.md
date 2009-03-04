@@ -13,6 +13,18 @@ As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-
     agile developer instantly.”
 
 
+Quickstart
+==========
+
+ 0. gem sources -a http://gems.github.com
+ 1. gem install auxesis-cucumber-nagios
+ 2. cucumber-nagios-gen project bunch-o-tests
+ 3. cd bunch-o-tests
+ 4. rake deps
+ 5. bin/cucumber-nagios-gen feature ebay.com.au bidding
+ 6. bin/cucumber-nagios features/ebay.com.au/bidding.feature
+
+
 Setting up a project
 ====================
 

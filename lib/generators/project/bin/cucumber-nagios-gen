@@ -33,6 +33,7 @@ module CucumberNagiosGenerators
 
   end
 
+  desc "Generators for a cucumber-nagios project"
   add :feature, FeatureGenerator
 
 end

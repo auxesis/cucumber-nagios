@@ -186,4 +186,4 @@ To get up and running with bzr:
     $ bzr add
     $ bzr commit -m 'created cucumber-nagios project'
 
-.bzrignore and .gitignores are created when you generate a project.
+`.bzrignore` and `.gitignores` are created when you generate a project.

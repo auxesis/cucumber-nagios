@@ -7,28 +7,34 @@ module CucumberNagiosGenerators
 
   extend Templater::Manifold
 
-  class ProjectGenerator < Templater::Generator
+  # feature generator
+  class FeatureGenerator < Templater::Generator
     def self.source_root
-      File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'project')
+      File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'feature')
     end
 
-    def destination_root
-      # takes :name from first_argument
-      File.join(@destination_root, name)
+    desc <<-DESC
+      Generate a cucumber feature. Takes a two arguments:
+        bin/cucumber-nagios-gen feature <site-name> <feature-name>
+    DESC
+
+    first_argument :site, :required => true, :desc => "Site name"
+    second_argument :feature, :required => true, :desc => "Feature name"
+
+    template :feature do |template|
+      template.source = "%feature_name%.feature"
+      template.destination = "features/#{site}/#{feature}.feature"
     end
 
-    desc "Generate a new self-contained cucumber-nagios project."
-    first_argument :name, :required => true, :desc => "Project name"
-
-    glob!
-    #file :rakefile, 'Rakefile'
+    template :step do |template|
+      template.source = "%feature_name%_steps.rb"
+      template.destination = "features/#{site}/steps/#{feature}_steps.rb"
+    end
 
   end
 
-  desc "Generate a cucumber-nagios project."
-  add :project, ProjectGenerator
+  add :feature, FeatureGenerator
 
 end
-
 
 CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', '0.1', ARGV

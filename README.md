@@ -118,6 +118,7 @@ writing your tests:
                  --require features/ 
                  features/smh/smh.feature
 
+This will output using the default 'pretty' formatter. 
 
 Running
 =======
@@ -141,8 +142,11 @@ The value printed at the end is in Nagios's Performance Data format, so it
 can be graphed and the like.
 
 
-Caveats
-=======
+Quirks & Caveats
+================
+
+Multiple scenarios
+------------------
 
 You may want to think about keeping to one scenario to a file, otherwise 
 you'll get multiple lines of output for a test:
@@ -152,6 +156,16 @@ you'll get multiple lines of output for a test:
 
 That said, Nagios should only read the last line, so this might be an ok 
 behaviour when you want to test for an aggregate of failures across a site.
+
+Failure *is* an option (exceptions are good)
+--------------------------------------------
+
+Exceptions raised within your tests will appear in the failed totals, so you 
+don't need to worry about trying to catch them in your own custom steps. 
+
+i.e. if you try fetching a page on a server that is down, or the page returns 
+a 404, the exception raised by Mechanize just gets treated by Cucumber as a 
+test failure. 
 
 
 Version control

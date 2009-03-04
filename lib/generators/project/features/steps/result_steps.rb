@@ -11,9 +11,9 @@ Then /^I should see an? (\w+) message$/ do |message_type|
 end
 
 Then /^the (.*) ?request should succeed/ do |_|
-  response.should be_successful
+  success_code?.should be_true
 end
 
 Then /^the (.*) ?request should fail/ do |_|
-  response.should_not be_successful
+  success_code?.should be_false
 end

@@ -10,6 +10,10 @@ Then /^I should see an? (\w+) message$/ do |message_type|
   response.should have_xpath("//*[@class='#{message_type}']")
 end
 
+Then /^the (.*) ?request should succeed/ do |_|
+  response.should be_successful
+end
+
 Then /^the (.*) ?request should fail/ do |_|
   response.should_not be_successful
 end

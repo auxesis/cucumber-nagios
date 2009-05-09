@@ -21,3 +21,8 @@ task :deps do
     system("gem install #{dep} -i gems --no-rdoc --no-ri")
   end
 end
+
+desc "build gem"
+task :build do 
+  system("gem build cucumber-nagios.gemspec")
+end

@@ -1,22 +1,28 @@
-# features/support/nagios.rb
-require 'rubygems'
-
 module Nagios
-  class NagiosFormatter
-    def initialize(io, step_mother, options={})
+  class NagiosFormatter < Cucumber::Ast::Visitor
+    def initialize(step_mother, io, options={})
+      super(step_mother)
       @failed = []
       @passed = []
     end
 
-    def step_passed(step, name, params)
-      @passed << step
+    def visit_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
+      super
+      name = "#{keyword} #{step_match.step_name}"
+      case status
+        when :passed
+          @passed << name
+        when :failed
+          @failed << name
+      end
+    end
+    def visit_steps(steps)
+      super
+      scenario_executed
     end
 
-    def step_failed(step, name, params)
-      @failed << step
-    end
-
-    def scenario_executed(scenario)
+    private
+    def scenario_executed
       @total = @failed.size + @passed.size
       message = ""
       message += "Critical: #{@failed.size}, "

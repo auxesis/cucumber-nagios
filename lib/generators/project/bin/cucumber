@@ -7,5 +7,5 @@ rescue LoadError
   require 'bin/common'
 end
 
-require 'cucumber/cli'
-Cucumber::CLI.execute(ARGV)
+require 'cucumber/cli/main'
+Cucumber::Cli::Main.execute(ARGV)

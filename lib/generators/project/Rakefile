@@ -19,10 +19,10 @@ end
 desc "freeze deps"
 task :deps do 
 
-  deps = {'cucumber' => "= 0.1.16", 
+  deps = {'cucumber' => "~> 0.3.0",
+          'rspec' => "~> 1.2.4",
           'webrat' => ">= 0.4.2", 
-          'mechanize' => ">= 0.9.1", 
-          'rspec' => ">= 1.1.12"}
+          'mechanize' => ">= 0.9.1"}
 
   puts "\ninstalling dependencies. this will take a few minutes."
 

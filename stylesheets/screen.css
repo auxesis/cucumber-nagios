@@ -85,3 +85,9 @@ li {
 a {
   text-decoration: none;
 }
+
+/*
+ul.related li {
+  display: inline;
+}
+*/

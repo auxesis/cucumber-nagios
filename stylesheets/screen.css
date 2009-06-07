@@ -59,23 +59,25 @@ h2 {
 
 code {
   font-size: 90%;
-  padding: 4px;
 }
 
 code.cmd {
   color: #fce99c;
   background-color: #2e3436;
+  padding: 4px;
 }
 
 code.arg {
   color: #fca69c;
   background-color: #2e3436;
+  padding: 4px;
 }
 
 
 code.file {
   color: #a3e9cf;
   background-color: #2e3436;
+  padding: 4px;
 }
 
 li {

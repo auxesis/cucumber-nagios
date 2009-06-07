@@ -1,1 +1,99 @@
-<h1>Hello world!</h1>
+---
+layout: default
+title: cucumber-nagios
+---
+
+<p>
+  <code>cucumber-nagios</code> lets you describe how a website
+	should work in plain text, and outputs whether it does in the 
+	Nagios plugin format:
+</p>
+
+<blockquote>
+	<pre class="code">
+Feature: google.com
+  It should be up
+  And I should be able to search for things
+
+  Scenario: Searching for things
+    When I visit "http://www.google.com"
+    And I fill in "q" with "wikipedia"
+    And I press "Google Search"
+    Then I should see "www.wikipedia.org"
+	</pre>
+</blockquote>
+ 
+<p>
+  Then run it:
+</p> 
+
+<blockquote>
+	<pre class="code">
+$ cucumber-nagios google.feature
+Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
+	</pre>
+</blockquote>
+
+<h2>Installing</h2>
+<p>
+  <code>cucumber-nagios</code> is distributed as a RubyGem. 
+</p>
+<blockquote>
+	<pre class="code">
+$ gem sources -a http://gems.github.com
+$ gem install auxesis-cucumber-nagios
+	</pre>
+</blockquote>
+<p>
+  Then you just set up a project to contain all your descriptions.
+</p>
+<blockquote>
+	<pre class="code">
+$ cucumber-nagios-gen project ebay.com.au
+$ cd ebay.com.au
+$ rake deps
+	</pre>
+</blockquote>
+<p>
+  <code class="cmd">rake deps</code> freezes in RubyGem dependencies
+  so you can tarball up your <code>cucumber-nagios</code>
+  project and put it on another machine easily.
+</p>
+
+<h2>Using</h2>
+<p>
+Your <code>cucumber-nagios</code> project includes a generator that 
+can spit out features. 
+
+From within your project directory:
+</p>
+<blockquote>
+	<pre class="code">
+$ bin/cucumber-nagios-gen feature ebay.com.au bidding
+	</pre>
+</blockquote>
+
+<p>
+<code class="arg">ebay.com.au</code> being the site you want to test, 
+and <code class="arg">bidding</code> the feature you want to test.
+</p>
+
+<p>
+  Write your features in your favourite editor (the above feature
+  will live in <code class="file">features/ebay.com.au/bidding.feature</code>), 
+  then test it with:
+</p>
+<blockquote>
+	<pre class="code">
+$ cucumber-nagios features/ebay.com.au/bidding.feature
+Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
+	</pre>
+</blockquote>
+
+<h2>Meta</h2>
+<ul>
+  <li>Code lives on <a href="http://github.com/auxesis/cucumber-nagios">GitHub</a>.</li>
+  <li>There will be bugs - <a href="http://github.com/auxesis/cucumber-nagios/issues">report them</a>!</li>
+  <li><a href="http://en.wikipedia.org/wiki/MIT_License">MIT Licenced</a>.</li>
+  <li>Written by <a href="http://holmwood.id.au/~lindsay/">Lindsay Holmwood</a>.</li>
+</ul>

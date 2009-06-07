@@ -1,0 +1,87 @@
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 62.5%;
+}
+
+/* styles */
+body {
+  font-size: 1.3em;
+  background-color: black;
+  font-family: Georgia, Times New Roman, serif;
+}
+
+div#wrapper {
+  background-color: white;
+  margin-left: 160px;
+  width: 700px;
+  padding: 2em;
+}
+
+div#header {
+  margin-bottom: 32px;
+}
+
+h1.project {
+  font-size: 3.2em;
+  background-color: #2b7911;
+  color: white;
+  padding: 12px;
+  display: inline;
+}
+
+blockquote {
+  margin: 16px;
+}
+
+pre.code {
+  background-color: #2e3436;
+  color: white;
+  padding: 16px 20px 0px;
+  font-family: Lucida Console, monospace;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+}
+
+p {
+  line-height: 130%;
+  margin: 8px 0px;
+}
+
+h2 {
+  padding: 24px 0px 6px;
+}
+
+code {
+  font-size: 90%;
+  padding: 4px;
+}
+
+code.cmd {
+  color: #fce99c;
+  background-color: #2e3436;
+}
+
+code.arg {
+  color: #fca69c;
+  background-color: #2e3436;
+}
+
+
+code.file {
+  color: #a3e9cf;
+  background-color: #2e3436;
+}
+
+li {
+  margin-left: 16px;
+}
+
+a {
+  text-decoration: none;
+}

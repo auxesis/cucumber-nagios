@@ -8,21 +8,21 @@ module Nagios
 
     def visit_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
       super
-      name = "#{keyword} #{step_match.step_name}"
       case status
         when :passed
-          @passed << name
+          @passed << step_match
         when :failed
-          @failed << name
+          @failed << step_match
       end
     end
+
     def visit_steps(steps)
       super
-      scenario_executed
+      print_summary
     end
 
     private
-    def scenario_executed
+    def print_summary
       @total = @failed.size + @passed.size
       message = ""
       message += "Critical: #{@failed.size}, "

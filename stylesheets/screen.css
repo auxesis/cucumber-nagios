@@ -80,8 +80,12 @@ code.file {
   padding: 4px;
 }
 
+ul {
+  padding-left: 4px;
+}
+
 li {
-  margin-left: 16px;
+  margin: 6px 0 6px 16px;
 }
 
 a {

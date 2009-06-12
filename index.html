@@ -5,12 +5,12 @@ title: cucumber-nagios
 
 <p>
   <code>cucumber-nagios</code> lets you describe how a website
-	should work in plain text, and outputs whether it does in the 
-	Nagios plugin format:
+  should work in plain text, and outputs whether it does in the 
+  Nagios plugin format:
 </p>
 
 <blockquote>
-	<pre class="code">
+  <pre class="code">
 Feature: google.com
   It should be up
   And I should be able to search for things
@@ -20,7 +20,7 @@ Feature: google.com
     And I fill in "q" with "wikipedia"
     And I press "Google Search"
     Then I should see "www.wikipedia.org"
-	</pre>
+  </pre>
 </blockquote>
  
 <p>
@@ -28,10 +28,10 @@ Feature: google.com
 </p> 
 
 <blockquote>
-	<pre class="code">
+  <pre class="code">
 $ cucumber-nagios google.feature
 Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
-	</pre>
+  </pre>
 </blockquote>
 
 <p>
@@ -49,20 +49,20 @@ Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
   <code>cucumber-nagios</code> is distributed as a RubyGem. 
 </p>
 <blockquote>
-	<pre class="code">
+  <pre class="code">
 $ gem sources -a http://gems.github.com
 $ gem install auxesis-cucumber-nagios
-	</pre>
+  </pre>
 </blockquote>
 <p>
   Then you just set up a project to contain all your descriptions.
 </p>
 <blockquote>
-	<pre class="code">
+  <pre class="code">
 $ cucumber-nagios-gen project ebay.com.au
 $ cd ebay.com.au
 $ rake deps
-	</pre>
+  </pre>
 </blockquote>
 <p>
   <code class="cmd">rake deps</code> freezes in RubyGem dependencies
@@ -78,9 +78,9 @@ can spit out features.
 From within your project directory:
 </p>
 <blockquote>
-	<pre class="code">
+  <pre class="code">
 $ bin/cucumber-nagios-gen feature ebay.com.au bidding
-	</pre>
+  </pre>
 </blockquote>
 
 <p>
@@ -94,21 +94,38 @@ and <code class="arg">bidding</code> the feature you want to test.
   then test it with:
 </p>
 <blockquote>
-	<pre class="code">
+  <pre class="code">
 $ bin/cucumber-nagios features/ebay.com.au/bidding.feature
 Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
-	</pre>
+  </pre>
 </blockquote>
+
 
 <h2>Meta</h2>
 <ul>
   <li>Code lives on <a href="http://github.com/auxesis/cucumber-nagios">GitHub</a>.</li>
   <li>There will be bugs - <a href="http://github.com/auxesis/cucumber-nagios/issues">report them</a>!</li>
   <li><a href="http://en.wikipedia.org/wiki/MIT_License">MIT Licenced</a>.</li>
-  <li>Written by <a href="http://holmwood.id.au/~lindsay/">Lindsay Holmwood</a>.</li>
+  <li>Written by <a href="http://holmwood.id.au/~lindsay/">Lindsay Holmwood</a> and <a
+    href="http://github.com/auxesis/cucumber-nagios/blob/978871e2a6ceac1fc0496be508b132cbcb18f22e/AUTHORS">helpers</a>.</li>
 </ul>
 
 <h2>Related</h2>
+<ul class="related">
+  <li>
+    Jason Goecke on 
+  <a
+    href="http://blog.goecke.net/2009/06/10/behavior-driven-systems-monitoring-for-telephony/">Behavior
+    Driven Systems Monitoring for Telephony</a> with <code>cucumber-nagios</code> and <a
+    href="http://github.com/jsgoecke/telephony-system-tests/tree/master">telephony-system-tests</a>.</li>
+  <li>Bradley Taylor on <a
+    href="http://bradley.is/post/82649218/testing-dash-metrics-with-cucumber">Testing Dash Metric
+    with Cucumber</a>.</li>
+  <li>James Turnbull has <a href="http://www.kartar.net/2009/03/cucumber/">some good examples</a> of
+  using <code>cucumber-nagios</code>.</li>
+</ul>
+
+<h2>Friends</h2>
 <ul class="related">
   <li><a href="http://cukes.info/">Cucumber</a>, Behaviour Driven Development with elegance and joy.</li>
   <li><a href="http://flapjack-project.com/">Flapjack</a>, the delicious monitoring system.</li> 

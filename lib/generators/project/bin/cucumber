@@ -7,5 +7,17 @@ rescue LoadError
   require 'bin/common'
 end
 
+require 'cucumber/rspec_neuter'
 require 'cucumber/cli/main'
-Cucumber::Cli::Main.execute(ARGV)
+
+begin
+  # The dup is to keep ARGV intact, so that tools like ruby-debug can respawn.
+  failure = Cucumber::Cli::Main.execute(ARGV.dup)
+  Kernel.exit(failure ? 1 : 0)
+rescue SystemExit => e
+  Kernel.exit(e.status)
+rescue Exception => e
+  STDERR.puts("#{e.message} (#{e.class})")
+  STDERR.puts(e.backtrace.join("\n"))
+  Kernel.exit 1
+end

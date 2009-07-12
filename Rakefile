@@ -13,15 +13,6 @@ rescue LoadError
 end
 
 
-desc "freeze deps"
-task :deps do 
-  deps = ['cucumber', 'webrat', 'mechanize']
-  deps.each do |dep|
-    puts "installing #{dep}"
-    system("gem install #{dep} -i gems --no-rdoc --no-ri")
-  end
-end
-
 desc "build gem"
 task :build do 
   system("gem build cucumber-nagios.gemspec")

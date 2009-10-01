@@ -1,1 +1,2 @@
 - switch to bundler instead of manky rake task
+- attempt to extract response times from mechanize

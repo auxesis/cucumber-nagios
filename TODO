@@ -1,2 +1,4 @@
 - switch to bundler instead of manky rake task
 - attempt to extract response times from mechanize
+- upgrade formatter for newer versions of cucumber
+- s/MechanizeSession/MechanizeAdapter/ for new version of Webrat

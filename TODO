@@ -2,3 +2,4 @@
 - attempt to extract response times from mechanize
 - upgrade formatter for newer versions of cucumber
 - s/MechanizeSession/MechanizeAdapter/ for new version of Webrat
+- publish gem to gemcutter

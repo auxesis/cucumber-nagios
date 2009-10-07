@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.4.5'
+  s.version = '0.4.6'
   s.date = '2009-10-07'
   
   s.summary = "web app testing plugin for Nagios using Cucumber/Webrat/Mechanize"
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
  
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)
-  s.files = %w(bin/cucumber-nagios-gen lib/generators/project/Rakefile lib/generators/project/features lib/generators/project/features/steps lib/generators/project/features/steps/result_steps.rb lib/generators/project/features/steps/webrat_steps.rb lib/generators/project/features/support lib/generators/project/features/support/env.rb lib/generators/project/features/support/nagios.rb lib/generators/project/bin lib/generators/project/bin/common.rb lib/generators/project/bin/cucumber lib/generators/project/bin/cucumber-nagios lib/generators/project/bin/cucumber-nagios-gen lib/generators/project/.bzrignore lib/generators/project/.gitignore lib/generators/project/README LICENSE README.md Rakefile lib/generators/project/lib/generators/feature/%feature_name%.feature lib/generators/project/lib/generators/feature/%feature_name%_steps.rb)
+  s.files = %w(bin/cucumber-nagios-gen lib/generators/project/Rakefile lib/generators/project/features lib/generators/project/features/steps lib/generators/project/features/steps/result_steps.rb lib/generators/project/features/steps/webrat_steps.rb lib/generators/project/features/support lib/generators/project/features/support/env.rb lib/generators/project/features/support/nagios.rb lib/generators/project/bin lib/generators/project/bin/common.rb lib/generators/project/bin/cucumber lib/generators/project/bin/cucumber-nagios lib/generators/project/bin/cucumber-nagios-gen lib/generators/project/.bzrignore lib/generators/project/.gitignore lib/generators/project/README LICENSE README.md Rakefile lib/generators/project/lib/generators/feature/%feature_name%.feature lib/generators/project/lib/generators/feature/%feature_name%_steps.rb features/support/silent_system.rb features/using.feature features/steps/installing_steps.rb features/steps/using_steps.rb features/steps/creating_steps.rb features/creating.feature features/installing.feature)
 end
 
 

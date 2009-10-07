@@ -41,6 +41,9 @@ the project.
 Freezing 
 ========
 
+** This is really manky at the moment. cucumber-nagios will be switching to
+wycats' bundler at the next major release! **
+
 Freezing your dependencies into your project allows you to drop your 
 `cucumber-nagios` project to any machine and have it run. Its only requirement is 
 Ruby and Rake.
@@ -141,6 +144,38 @@ show up in the "okay" total.
 The value printed at the end is in Nagios's Performance Data format, so it
 can be graphed and the like.
 
+Benchmarking
+============
+
+You can benchmark your features if you need to test response times for a set of
+site interactions: 
+
+    Feature: slashdot.com
+      To keep the geek masses satisfied
+      Slashdot must be responsive
+    
+      Scenario: Visiting a responsive front page
+        Given I am benchmarking
+        When I go to http://slashdot.org/
+        Then the elapsed time should be less than 5 seconds
+
+The elapsed time step can be reused multiple times in the same scenario if you
+need fine grained testing: 
+
+    Feature: slashdot.com
+      To keep the geek masses satisfied
+      Slashdot must be responsive
+    
+      Scenario: Visiting news articles
+        Given I am benchmarking
+        When I go to http://slashdot.org/
+        Then the elapsed time should be less than 5 seconds
+        When I follow "Login"
+        Then the elapsed time should be less than 4 seconds
+        When I follow "Contact"
+        Then the elapsed time should be less than 7 seconds
+
+
 
 Quirks & Caveats
 ================
@@ -171,8 +206,8 @@ test failure.
 Version control
 ===============
 
-I highly recommend storing your cucumber-nagios projects in a version control
-system!
+It's highly recommend that you store your cucumber-nagios projects in a version
+control system!
 
 To get up and running with git: 
 

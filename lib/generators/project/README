@@ -96,9 +96,7 @@ selectors.
 I suggest you use bin/cucumber directly so you can get better feedback when 
 writing your tests:
 
-    bin/cucumber --require bin/common.rb \
-                 --require features/ 
-                 features/smh/smh.feature
+    bin/cucumber --require features/ features/smh/smh.feature
 
 This will output using the default 'pretty' formatter. 
 

@@ -1,28 +1,29 @@
-What do I do now?
-=================
 
-    1. freeze your project
-    2. version control your project
-    3. write features
+Bundling dependencies
+=====================
 
+Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios 
+project to any machine and have it run. This can be useful if you want to 
+develop your tests on one machine, and deploy them to another (like a production
+Nagios server). 
 
-Freezing 
-========
+You'll need to bundle your dependencies to use cucumber-nagios. 
 
-Freezing your dependencies into your project allows you to drop your 
-cucumber-nagios project to any machine and have it run. Its only requirement is 
-Ruby and Rake.
+First you need to make sure the following dependencies are installed: 
 
-To freeze your project, within your project directory run:
+  - RubyGems
+	- bundler gem (automatically pulled in by the cucumber-nagios gem)
 
-    $ rake deps
+To bundle your dependencies, within your project directory run:
+
+    $ gem bundle 
 
 
 Version control
 ===============
 
-I highly recommend storing your cucumber-nagios projects in a version control
-system!
+It's strongly recommend that you store your cucumber-nagios projects in a 
+version control system!
 
 To get up and running with git: 
 
@@ -47,7 +48,7 @@ you. It takes two arguments: the site you're testing, and feature you're testing
 
     bin/cucumber-nagios-gen feature gnome.org navigation
 
-This will spit out two files: 
+This will generate two files: 
 
     features/gnome.org/navigation.feature
     features/gnome.org/steps/navigation_steps.rb
@@ -57,8 +58,9 @@ As for writing features, you'll want to have a read of the Cucumber
 documentation[0], however your tests will look something like this:
 
     Feature: google.com.au
-      It should be up
-      And I should be able to search for things
+      To broaden their knowledge
+      A user should be able
+      To search for things
     
       Scenario: Searching for things
         Given I visit "http://www.google.com"
@@ -149,12 +151,16 @@ a 404, the exception raised by Mechanize just gets treated by Cucumber as a
 test failure. 
 
 
-Redeploying
-===========
+Deploying to production
+=======================
 
-Once you've copied your project around, Just run the freezer again: 
+Once you've copied your project around, just run the bundler again: 
 
-    $ rake deps
+    $ gem bundle
+
+You'll need to have RubyGems and the bundler gem installed on the system 
+you're deploying too. I know, this is not optimal, but hopefully the bundler
+gem will handle this better in the future. 
 
 
 [0] http://wiki.github.com/aslakhellesoy/cucumber

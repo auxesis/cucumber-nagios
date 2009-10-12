@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('templater', '>= 0.5')
   s.add_dependency('rake', '>= 0.8.3')
+  s.add_dependency('bundler', '>= 0.6.0')
  
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)

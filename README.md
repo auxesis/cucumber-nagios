@@ -16,13 +16,14 @@ As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-
 Quickstart
 ==========
 
- 0. `gem sources -a http://gems.github.com`
- 1. `gem install auxesis-cucumber-nagios`
- 2. `cucumber-nagios-gen project bunch-o-tests`
- 3. `cd bunch-o-tests`
- 4. `rake deps`
- 5. `bin/cucumber-nagios-gen feature ebay.com.au bidding`
- 6. `bin/cucumber-nagios features/ebay.com.au/bidding.feature`
+ 0. `gem install gemcutter`
+ 1. `gem tumble` 
+ 2. `gem install cucumber-nagios`
+ 3. `cucumber-nagios-gen project bunch-o-tests`
+ 4. `cd bunch-o-tests`
+ 5. `gem bundle`
+ 6. `bin/cucumber-nagios-gen feature ebay.com.au bidding`
+ 7. `bin/cucumber-nagios features/ebay.com.au/bidding.feature`
 
 
 Setting up a project
@@ -38,26 +39,37 @@ Check the `README` within this directory for specific instructions for managing
 the project. 
 
 
-Freezing 
-========
+Bundling dependencies
+=====================
 
-** This is really manky at the moment. cucumber-nagios will be switching to
-wycats' bundler at the next major release! **
+Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios 
+project to any machine and have it run. This can be useful if you want to 
+develop your tests on one machine, and deploy them to another (like a production
+Nagios server). 
 
-Freezing your dependencies into your project allows you to drop your 
-`cucumber-nagios` project to any machine and have it run. Its only requirement is 
-Ruby and Rake.
+You'll need to bundle your dependencies to use cucumber-nagios. 
 
-To freeze your project, within your project directory run:
+First you need to make sure the following dependencies are installed: 
 
-    $ rake deps
+  - RubyGems
+	- bundler gem (automatically pulled in by the cucumber-nagios gem)
 
-Redeploying
-===========
+To bundle your dependencies, within your project directory run:
 
-Once you've copied your project around, Just run the freezer again: 
+    $ gem bundle 
 
-    $ rake deps
+
+Deploying to production
+=======================
+
+Once you've copied your project around, just run the bundler again: 
+
+    $ gem bundle
+
+You'll need to have RubyGems and the bundler gem installed on the system 
+you're deploying too. I know, this is not optimal, but hopefully the bundler
+gem will handle this better in the future. 
+
 
 Writing features
 ================
@@ -79,8 +91,9 @@ As for writing features, you'll want to have a read of the
 your tests will look something like this:
 
     Feature: google.com.au
-      It should be up
-      And I should be able to search for things
+      To broaden their knowledge
+      A user should be able
+      To search for things
     
       Scenario: Searching for things
         Given I visit "http://www.google.com"
@@ -117,9 +130,7 @@ selectors.
 I suggest you use `bin/cucumber` directly so you can get better feedback when 
 writing your tests:
 
-    bin/cucumber --require bin/common.rb \
-                 --require features/ 
-                 features/smh/smh.feature
+    bin/cucumber --require features/ features/smh/smh.feature
 
 This will output using the default 'pretty' formatter. 
 
@@ -222,3 +233,5 @@ To get up and running with bzr:
     $ bzr commit -m 'created cucumber-nagios project'
 
 `.bzrignore` and `.gitignores` are created when you generate a project.
+
+

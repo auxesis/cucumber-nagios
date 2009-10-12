@@ -18,10 +18,14 @@ unless File.exist?(feature)
 end
 
 command = "#{__DIR__}/cucumber"
-command += " --require #{__DIR__}/common.rb"
 command += " --require features/"
-command += " --format Nagios::NagiosFormatter"
+command += " --format Cucumber::Formatter::Nagios"
 command += " #{feature}"
+
+if ARGV[1] == "--debug"
+  puts command 
+  puts
+end
 
 system(command) ? exit(0) : exit(2)
 

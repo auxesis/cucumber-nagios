@@ -1,6 +1,8 @@
 Running tests
 =============
 
+Make sure you have the rspec and Cucumber gems installed. 
+
 Cucumber features live under features/. They cover the basics of installing,
 creating projects, and running cucumber-nagios. 
 

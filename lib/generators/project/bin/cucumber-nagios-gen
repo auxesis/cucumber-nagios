@@ -1,6 +1,17 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
+# attempt to load up the bundled gems, and give an explanatory message if we can't
+begin
+  require File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'environment')
+rescue LoadError
+  puts "You need to bundle gems into your project before you can run this."
+  puts
+  puts "To do this, make sure the 'bundler' gem is installed, and run:"
+  puts
+  puts "  $ gem bundle"
+  puts
+  exit 1
+end
 require 'templater'
 
 module CucumberNagiosGenerators
@@ -38,4 +49,4 @@ module CucumberNagiosGenerators
 
 end
 
-CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', '0.1', ARGV
+CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', '0.5', ARGV

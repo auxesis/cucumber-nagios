@@ -13,11 +13,11 @@ end
 
 When /^I freeze in dependencies$/ do
   @project_name.should_not be_nil
-  silent_system("cd /tmp/#{@project_name} ; rake deps")
+  silent_system("cd /tmp/#{@project_name} ; gem bundle").should be_true
 end
 
 Then /^my gems directory should be populated$/ do
   @project_name.should_not be_nil
-  Dir.glob("/tmp/#{@project_name}/gems/*").size.should > 0
+  Dir.glob("/tmp/#{@project_name}/vendor/gems/*").size.should > 0
 end
 

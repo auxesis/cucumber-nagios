@@ -22,7 +22,20 @@ module CucumberNagiosGenerators
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
-    glob!
+    glob! 
+    readme 
+
+    def readme
+      puts "Your new cucumber-nagios project is set up."
+      puts
+      puts "It's highly recommended you version control your projects:"
+      puts "  - With Git: git init"
+      puts "  - With Bazaar: bzr init"
+      puts
+      puts "You'll need to bundle gems into the project:"
+      puts "  - gem bundle"
+      puts
+    end
 
   end
 

@@ -4,17 +4,15 @@ require 'rubygems'
 require 'webrat'
 require 'webrat/mechanize'
 
-class MechanizeWorld < Webrat::MechanizeSession
-  require 'spec'
-  include Spec::Matchers
+class ResponseHelper
+  def response
+    webrat_session.response
+  end
 end
 
 World do
-  MechanizeWorld.new
-end
-
-def response
-  webrat_session.response
+  ResponseHelper.new
+  Webrat::Session.new(Webrat::MechanizeAdapter.new)
 end
 
 

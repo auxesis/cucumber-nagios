@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.6.0'
+  s.version = '0.6.1'
   s.date = '2009-11-09'
   
   s.summary = "systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh"

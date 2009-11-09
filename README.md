@@ -188,20 +188,8 @@ need fine grained testing:
 
 
 
-Quirks & Caveats
-================
-
-Multiple scenarios
-------------------
-
-You may want to think about keeping to one scenario to a file, otherwise 
-you'll get multiple lines of output for a test:
-
-    Critical: 1, Warning: 0, 2 okay | passed=2, failed=1, total=3
-    Critical: 1, Warning: 0, 4 okay | passed=4, failed=1, total=5
-
-That said, Nagios should only read the last line, so this might be an ok 
-behaviour when you want to test for an aggregate of failures across a site.
+Quirks
+======
 
 Failure *is* an option (exceptions are good)
 --------------------------------------------
@@ -234,4 +222,13 @@ To get up and running with bzr:
 
 `.bzrignore` and `.gitignores` are created when you generate a project.
 
+Testing
+-------
+
+The gem is thoroughly tested (with Cucumber, no less). The gem's Cucumber
+features live in $gemroot/features/, and can be run with: 
+
+    $ cucumber --require features/ features/installing.feature
+    $ cucumber --require features/ features/creating.feature
+    $ cucumber --require features/ features/using.feature
 

@@ -23,5 +23,6 @@ Then /^I can generate a new project$/ do
   FileUtils.rm_rf("/tmp/#{testproj}")
   
   silent_system("cd /tmp ; cucumber-nagios-gen project #{testproj}").should be_true
+  File.exists?("/tmp/#{testproj}").should be_true
 end
 

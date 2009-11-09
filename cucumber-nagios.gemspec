@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.date = '2009-11-09'
   
   s.summary = "systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh"
-  s.description = "cucumber-nagios lets you write high-level behavioural tests for your web applications and your Unix infrastructure that can be plugged into Nagios"
+  s.description = "cucumber-nagios lets you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios"
 
   s.rubyforge_project = 'cucumber-nagios'
   s.authors = ['Lindsay Holmwood']

@@ -2,4 +2,5 @@ add --pretty switch to cucumber-nagios to use pretty formatter
 merge in adamhjk's cucumber-nagios branch
 fix install instructions on cucumber-nagios website
 write example client for cucumber-nagios spork example
-
+write which release of cucumber-nagios project was generated with in readme
+write upgrading instructions

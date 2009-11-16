@@ -4,9 +4,9 @@ title: cucumber-nagios
 ---
 
 <p>
-  <code>cucumber-nagios</code> lets you describe how a website
-  should work in plain text, and outputs whether it does in the 
-  Nagios plugin format:
+  <code>cucumber-nagios</code> lets you describe how a system
+  should work in natural language, and outputs whether it does in 
+  the Nagios plugin format:
 </p>
 
 <blockquote>
@@ -30,18 +30,25 @@ Feature: google.com
 <blockquote>
   <pre class="code">
 $ cucumber-nagios google.feature
-Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
+Critical: 0, Warning: 0, 4 okay | passed=4, failed=0
   </pre>
 </blockquote>
 
 <p>
   <code>cucumber-nagios</code> uses 
-  <a href="http://cukes.info">Cucumber</a> &amp;
   <a href="http://github.com/brynary/webrat/tree/master#readme">Webrat</a> 
   with the 
   <a href="http://mechanize.rubyforge.org/mechanize/">Mechanize</a> 
   backend, so you can point it any site you can reach over HTTP 
-  (you don't have to have access to the site's code).
+  (you don't have to have access to the site's code).&nbsp;
+</p>
+<p>
+  <code>cucumber-nagios</code> can also interact with machines 
+  over SSH through 
+  <a href="http://net-ssh.rubyforge.org/ssh/v2/api/index.html">Net::SSH</a>,
+  bringing you closer to 
+  <a href="http://holmwood.id.au/~lindsay/2009/11/09/behaviour-driven-infrastructure-through-cucumber/">Behaviour
+  Driven Infrastructure</a> Nirvana.
 </p> 
 
 <h2>Installing</h2>
@@ -50,8 +57,9 @@ Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
 </p>
 <blockquote>
   <pre class="code">
-$ gem sources -a http://gems.github.com
-$ gem install auxesis-cucumber-nagios
+$ gem install gemcutter
+$ gem tumble
+$ gem install cucumber-nagios
   </pre>
 </blockquote>
 <p>
@@ -61,13 +69,18 @@ $ gem install auxesis-cucumber-nagios
   <pre class="code">
 $ cucumber-nagios-gen project ebay.com.au
 $ cd ebay.com.au
-$ rake deps
+$ gem bundle
   </pre>
 </blockquote>
 <p>
-  <code class="cmd">rake deps</code> freezes in RubyGem dependencies
-  so you can tarball up your <code>cucumber-nagios</code>
+  <code class="cmd">gem bundle</code> freezes in RubyGem dependencies with
+  <a href="http://github.com/wycats/bundler">Bundler</a>,
+  so you can tar up your <code>cucumber-nagios</code>
   project and put it on another machine easily.
+</p>
+<p class="notice">
+<img src="/images/important.png"/>
+  Please note, the RubyGems Bundler requires RubyGems 1.3.5 or greater. 
 </p>
 
 <h2>Using</h2>
@@ -104,7 +117,7 @@ Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
 <h2>Meta</h2>
 <ul>
   <li>Code lives on <a href="http://github.com/auxesis/cucumber-nagios">GitHub</a>.</li>
-  <li>There will be bugs - <a href="http://github.com/auxesis/cucumber-nagios/issues">report them</a>!</li>
+  <li>There will be bugs - please <a href="http://github.com/auxesis/cucumber-nagios/issues">report them</a>!</li>
   <li><a href="http://en.wikipedia.org/wiki/MIT_License">MIT Licenced</a>.</li>
   <li>Written by <a href="http://holmwood.id.au/~lindsay/">Lindsay Holmwood</a> and <a
     href="http://github.com/auxesis/cucumber-nagios/blob/978871e2a6ceac1fc0496be508b132cbcb18f22e/AUTHORS">helpers</a>.</li>
@@ -123,6 +136,17 @@ Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
     with Cucumber</a>.</li>
   <li>James Turnbull has <a href="http://www.kartar.net/2009/03/cucumber/">some good examples</a> of
   using <code>cucumber-nagios</code>.</li>
+  <li>Lindsay Holmwood <a
+    href="http://www.slideshare.net/auxesis/behaviour-driven-monitoring-with-cucumbernagios-2444224">talked
+    about</a> <code>cucumber-nagios</code> at <a href="http://devopsdays.org">Devopsdays 2009</a>.</li>
+  <li>Stephen Nelson-Smith does a great introductory post on <a 
+    href="http://agilesysadmin.net/cucumber-nagios">Intelligent Monitoring</a>
+  with <code>cucumber-nagios</code>.</li>
+  <li>Olivier Jan at nagios-fr.org
+  introduces <code>cucumber-nagios</code> <a 
+    href="http://www.nagios-fr.org/2009/11/cucumber-nagios/">en français</a>.
+  </li>
+
 </ul>
 
 <h2>Friends</h2>

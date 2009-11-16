@@ -97,8 +97,12 @@ a:hover {
   border-bottom: 2px solid #ddd;
 }
 
-/*
-ul.related li {
-  display: inline;
+p.notice {
+  background-color: #f6ffa6;
+  padding: 1em;
 }
-*/
+
+p.notice img {
+  float: left;
+  padding-right: 1em;
+}

@@ -25,3 +25,17 @@ task :build do
     puts "New gem in #{dest}"
   end
 end
+
+desc "push gem"
+task :push do 
+  filenames = Dir.glob("pkg/*.gem")
+  filenames_with_times = filenames.map do |filename| 
+    [filename, File.mtime(filename)] 
+  end
+  
+  oldest = filenames_with_times.sort_by { |tuple| tuple.last }.last
+  oldest_filename = oldest.first
+
+  command = "gem push #{oldest_filename}"
+  system(command)
+end

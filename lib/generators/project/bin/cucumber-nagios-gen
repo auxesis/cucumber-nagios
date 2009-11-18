@@ -49,4 +49,4 @@ module CucumberNagiosGenerators
 
 end
 
-CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', '0.5', ARGV
+CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', <%= Cucumber::Nagios::VERSION %>, ARGV

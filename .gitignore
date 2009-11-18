@@ -3,6 +3,7 @@
 .#*
 .bzr
 .bzrignore
+.*.swp
 gems/specifications/*
 gems/gems/*
 gems/bin/*

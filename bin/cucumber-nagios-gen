@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'templater'
+require 'cucumber-nagios'
 
 module CucumberNagiosGenerators
 
@@ -22,6 +23,12 @@ module CucumberNagiosGenerators
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
+    
+    template :generator do |generator|
+      template.source = "bin/cucumber-nagios-gen"
+      template.destination = "bin/cucumber-nagios-gen"
+    end
+
     glob! 
 
   end
@@ -32,7 +39,7 @@ module CucumberNagiosGenerators
 end
 
 
-CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', '0.1', ARGV
+CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', Cucumber::Nagios::VERSION, ARGV
 
 puts <<-README
 Your new cucumber-nagios project is set up.

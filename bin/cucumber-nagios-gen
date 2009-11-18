@@ -24,11 +24,6 @@ module CucumberNagiosGenerators
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
     
-    template :generator do |generator|
-      template.source = "bin/cucumber-nagios-gen"
-      template.destination = "bin/cucumber-nagios-gen"
-    end
-
     glob! 
 
   end

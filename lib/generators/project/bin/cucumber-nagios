@@ -17,13 +17,21 @@ unless File.exist?(feature)
   exit 98
 end
 
-command = "#{__DIR__}/cucumber"
-command += " --require features/"
-command += " --format Cucumber::Formatter::Nagios"
-command += " #{feature}"
+command_parts = []
+command_parts << "#{__DIR__}/cucumber"
+command_parts << "--require features/"
 
-if ARGV[1] == "--debug"
-  puts command 
+if ARGV.grep(/^\-\-pretty$/).size > 0
+  command_parts << "--format pretty"
+else
+  command_parts << "--format Cucumber::Formatter::Nagios"
+end
+
+command_parts << feature
+command = command_parts.join(' ')
+
+if ARGV.grep(/^\-\-debug$/).size > 0
+  puts command
   puts
 end
 

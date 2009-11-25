@@ -6,10 +6,11 @@ unless ARGV[0]
 end
 
 __DIR__ = File.expand_path(File.dirname(__FILE__))
+features_dir = File.expand_path(File.join(__DIR__, '..', 'features'))
 
 feature = ARGV[0]
 unless File.exists?(feature)
-  feature = File.join(__DIR__, '..', 'features', ARGV[0]) 
+  feature = File.join(features_dir, ARGV[0]) 
 end
 
 unless File.exist?(feature)
@@ -19,7 +20,7 @@ end
 
 command_parts = []
 command_parts << "#{__DIR__}/cucumber"
-command_parts << "--require features/"
+command_parts << "--require #{features_dir}"
 
 if ARGV.grep(/^\-\-pretty$/).size > 0
   command_parts << "--format pretty"

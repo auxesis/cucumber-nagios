@@ -52,6 +52,8 @@ Given /^I have the following public keys:$/ do |table|
 end
 
 When /^I ssh to "([^\"]*)" with the following credentials:$/ do |hostname, table|
+  @keys = []
+  @auth_methods ||= %w(password)
   session = table.hashes.first
   session_keys = Array.new(@keys)
   session_auth_methods = Array.new(@auth_methods) 

@@ -3,6 +3,7 @@
 require 'rubygems'                                                                                      
 require 'webrat'
 require 'webrat/mechanize'
+require 'net/ssh'
 
 class ResponseHelper
   def response

@@ -9,5 +9,6 @@ Contributors
 Morgan Christiansson <morgan@mog.se>
 Martin Englund <martin.englund@sun.com>
 Adam Jacob <adam@opscode.com>
+Juri Rischel Jensen <juri@fab-it.dk>
 
 Portions of cucumber-nagios contain code originally contributed to Chef (http://github.com/opscode/chef)

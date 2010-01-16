@@ -13,6 +13,7 @@ Feature: Examining files
   Scenario: Atime
     Given we have an empty file named '/tmp/foo.file'
       And we have the atime/mtime of '/tmp/foo.file'
+      And I run 'sleep 1'
       And I run 'touch -a /tmp/foo.file'
      Then the atime of '/tmp/foo.file' should be different
 

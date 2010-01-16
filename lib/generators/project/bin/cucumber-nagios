@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 unless ARGV[0]
-  puts "Usage: #{__FILE__} <feature>"
-  exit 99
+  puts "Usage: #{__FILE__} <feature> [--debug|--pretty]"
+  exit 4
 end
 
 __DIR__ = File.expand_path(File.dirname(__FILE__))
@@ -15,14 +15,14 @@ end
 
 unless File.exist?(feature)
   puts "Error: feature file doesn't exist!"
-  exit 98
+  exit 4
 end
 
 command_parts = []
 command_parts << "#{__DIR__}/cucumber"
 command_parts << "--require #{features_dir}"
 
-if ARGV.grep(/^\-\-pretty$/).size > 0
+if ARGV.include?("--pretty")
   command_parts << "--format pretty"
 else
   command_parts << "--format Cucumber::Formatter::Nagios"

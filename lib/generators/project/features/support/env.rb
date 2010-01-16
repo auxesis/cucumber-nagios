@@ -2,7 +2,7 @@
 
 require 'rubygems'                                                                                      
 require 'webrat'
-require 'webrat/mechanize'
+require 'webrat/adapters/mechanize'
 require 'net/ssh'
 
 class ResponseHelper

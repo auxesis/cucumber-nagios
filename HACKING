@@ -8,6 +8,6 @@ creating projects, and running cucumber-nagios.
 
 Run the features with: 
 
-    $ rake features
+    $ rake cucumber
 
 They can take a while as they freeze in the dependencies a bunch of times.  

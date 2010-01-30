@@ -186,7 +186,24 @@ need fine grained testing:
         When I follow "Contact"
         Then the elapsed time should be less than 7 seconds
 
+AMQP Message Queues
+===================
 
+You can test for various conditions on an AMQP message queue.
+
+    Feature: github.com
+      To make sure the rest of the system is in order
+      All our message queues must not be backed up
+
+      Scenario: test queue 2
+        Given I have a AMQP server on rabbit.github.com
+        And I want to check on the fork queue
+        Then it should have less than 400 messages
+        Then it should have at least 5 consumers
+        Then it should have less than 50 messages per consumer
+        
+This has been tested using RabbitMQ but uses the amqp gem which should support
+other backends. See features/amqp_steps.rb for all the available steps.
 
 Quirks
 ======

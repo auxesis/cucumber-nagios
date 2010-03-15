@@ -52,11 +52,14 @@ You'll need to bundle your dependencies to use cucumber-nagios.
 First you need to make sure the following dependencies are installed: 
 
   - RubyGems
-	- bundler gem (automatically pulled in by the cucumber-nagios gem)
+	- bundler08 gem (automatically pulled in by the cucumber-nagios gem)
 
 To bundle your dependencies, within your project directory run:
 
     $ gem bundle 
+
+*Please note*: cucumber-nagios uses `bundler08`, **not** `bundler`. Until the
+`bundler` guys sort their shit out, I refuse to release software that uses it.
 
 
 Deploying to production

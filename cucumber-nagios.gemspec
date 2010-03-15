@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.6.7'
-  s.date = '2010-01-16'
+  s.version = '0.6.8'
+  s.date = '2010-03-15'
   
   s.summary = "systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh"
   s.description = "cucumber-nagios lets you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios"
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('templater', '>= 0.5')
   s.add_dependency('rake', '>= 0.8.3')
-  s.add_dependency('bundler', '>= 0.6.0')
+  s.add_dependency('bundler08', '= 0.8.5')
  
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)

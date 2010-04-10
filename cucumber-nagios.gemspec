@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.6.7'
+  s.version = '0.6.8'
   s.date = '2010-01-16'
   
   s.summary = "systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh"
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency('bundler', '>= 0.6.0')
   s.add_dependency('amqp', '>= 0.6.6')
   s.add_dependency('cucumber', '>= 0.6.1')
-  s.add_dependency('net-ssh', '>= 2.0.18')
+  s.add_dependency('net-ssh', '= 2.0.18')
 
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)

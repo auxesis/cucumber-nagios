@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'mq'
 
 # simple function to get at the number of messages on a queue and the 

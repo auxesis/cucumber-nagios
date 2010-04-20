@@ -17,6 +17,9 @@ Gem::Specification.new do |s|
   s.add_dependency('bundler08', '= 0.8.5')
   s.add_dependency('cucumber', '>= 0.6.1')
   s.add_dependency('net-ssh', '= 2.0.18')
+  s.add_dependency('webrat', '= 0.7.0')
+  s.add_dependency('amqp', '= 0.6.7')
+  s.add_dependency('rspec', '>= 1.3.0')
 
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)

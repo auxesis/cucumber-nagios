@@ -25,11 +25,11 @@ Feature: Examining files
      Then the mtime of '/tmp/foo.file' should be different
 
   Scenario: File contents
-    When I run 'echo "monkeypants\nmonkeyshorts" > /tmp/monkeytest.file'
+    When I run 'shopt -s xpg_echo ; echo "monkeypants\nmonkeyshorts" > /tmp/monkeytest.file'
     Then a file named '/tmp/monkeytest.file' should contain 'monkeypants'
 
   Scenario: File contents multiple times
-    When I run 'echo "monkeypants\nmonkeyshorts" > /tmp/monkeytest.file'
+    When I run 'shopt -s xpg_echo ; echo "monkeypants\nmonkeyshorts" > /tmp/monkeytest.file'
     Then a file named '/tmp/monkeytest.file' should contain 'monkey.+' only '2' times
 
   Scenario: File modes

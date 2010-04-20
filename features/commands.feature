@@ -12,7 +12,7 @@ Feature: Executing commands
     Then 'stderr' should have 'i like cheese'
 
   Scenario: Check Stdout for multiple lines
-    When I run 'echo "one\n\one\none\n"'
+    When I run 'shopt -s xpg_echo ; echo "one\n\one\none\n"'
     Then 'one' should appear on 'stdout' '3' times
 
   Scenario: Check exit code 

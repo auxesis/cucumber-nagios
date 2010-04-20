@@ -1,9 +1,8 @@
-#!/usr/bin/env ruby 
+require 'cucumber/nagios'
 
-require 'rubygems'                                                                                      
-require 'webrat'
+#For standalone execution
+
 require 'webrat/adapters/mechanize'
-require 'net/ssh'
 
 class ResponseHelper
   def response
@@ -15,5 +14,3 @@ World do
   ResponseHelper.new
   Webrat::Session.new(Webrat::MechanizeAdapter.new)
 end
-
-

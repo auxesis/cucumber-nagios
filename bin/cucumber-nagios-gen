@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'templater'
-require 'cucumber-nagios'
+require 'cucumber/nagios'
 
 module CucumberNagiosGenerators
 
@@ -23,8 +23,11 @@ module CucumberNagiosGenerators
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
-    
-    glob! 
+
+    directory :steps, ::File.join(File.dirname(__FILE__), '..', 'lib', 'cucumber', 'nagios', 'steps'), 'features/steps'
+    directory :features, ::File.join(File.dirname(__FILE__), '..', 'lib', 'cucumber', 'nagios', 'support'), 'features/support'
+
+    glob!
 
   end
 

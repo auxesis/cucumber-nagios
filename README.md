@@ -221,6 +221,23 @@ i.e. if you try fetching a page on a server that is down, or the page returns
 a 404, the exception raised by Mechanize just gets treated by Cucumber as a 
 test failure. 
 
+Using the Steps in another Cucumber suite
+=========================================
+
+If you want to use the steps defined in cucumber-nagios elsewhere, you can
+require the steps in `features/support/env` like so:
+
+    # All
+    require 'cucumber/nagios/steps'
+
+    # Or one by one
+    require 'cucumber/nagios/steps/ssh'
+    require 'cucumber/nagios/steps/ping'
+
+Using the Formatter in another Cucumber suite
+=============================================
+
+    cucumber --format Cucumber::Formatter::Nagios features/foo.feature
 
 Version control
 ===============

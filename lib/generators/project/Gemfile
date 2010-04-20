@@ -7,4 +7,4 @@ gem "webrat", "0.6.0"
 gem "mechanize", "0.9.3"
 gem "templater", "1.0.0"
 gem "net-ssh", "2.0.18"
-
+gem "amqp", "0.6.6"

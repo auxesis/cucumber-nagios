@@ -21,7 +21,7 @@ module Cucumber
 
       def after_table_row(table_row)
         unless @header_row 
-          record_result(table_row.status)
+          record_result(table_row.status) if table_row.respond_to?(:status)
         end
         @header_row = false if @header_row
       end

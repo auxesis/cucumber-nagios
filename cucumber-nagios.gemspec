@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.7.0'
+  s.version = '0.7.1'
   s.date = '2010-04-20'
   
   s.summary = "systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh"
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.bindir = "bin"
   s.executables = %w(cucumber-nagios-gen)
-  s.files        = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md AUTHORS HACKING TODO lib/generators/project/.gitignore lib/generators/project/.bzrignore)
+  s.files = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md AUTHORS HACKING TODO lib/generators/project/.gitignore lib/generators/project/.bzrignore)
 end
 
 

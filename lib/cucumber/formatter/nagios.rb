@@ -12,16 +12,20 @@ module Cucumber
       end
   
       def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
-        case status
-        when :passed
-          @passed << step_match
-        when :failed
-           @failed << step_match
-        when :undefined
-          @warning << step_match
-        end
+        record_result(status, :step_match => step_match)
       end
-  
+
+      def before_examples(*args)
+        @header_row = true
+      end
+
+      def after_table_row(table_row)
+        unless @header_row 
+          record_result(table_row.status)
+        end
+        @header_row = false if @header_row
+      end
+
       def after_features(steps)
         print_summary
       end
@@ -42,6 +46,19 @@ module Cucumber
         @io.print(message)
         @io.flush
       end
+      
+      def record_result(status, opts={})
+        step_match = opts[:step_match] || true
+        case status
+        when :passed
+          @passed << step_match
+        when :failed
+           @failed << step_match
+        when :undefined
+          @warning << step_match
+        end
+      end
+
 
     end
   end

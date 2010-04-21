@@ -3,7 +3,4 @@
 .#*
 .bzr
 .bzrignore
-vendor/gems/specifications/*
-vendor/gems/gems/*
-vendor/gems/bin/*
-vendor/gems/environment.rb
+vendor/gems/*

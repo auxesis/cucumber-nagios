@@ -9,7 +9,7 @@ Then /^I can ssh to "([^\"]*)" with the following credentials:$/ do |host, table
   credentials.each do |creds|
     lambda {
 	    Net::SSH.start(host, creds["username"], :password => creds["password"], :auth_methods => @auth_methods)
-    }.should_not raise_error(Net::SSH::AuthenticationFailed)
+    }.should_not raise_error
   end
 end
 
@@ -34,7 +34,7 @@ Then /^I can ssh to the following hosts with these credentials:$/ do |table|
 	    Net::SSH.start(session["hostname"], session["username"], :password => session["password"], 
                                                                :auth_methods => session_auth_methods,
                                                                :keys => session_keys)
-    }.should_not raise_error(Net::SSH::AuthenticationFailed)
+    }.should_not raise_error
   end
 end
 

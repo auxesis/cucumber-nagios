@@ -1,28 +1,26 @@
 cucumber-nagios
 ===============
 
-cucumber-nagios allows you to write high-level behavioural tests of web 
-application, and plug the results into Nagios. 
+cucumber-nagios allows you to write high-level behavioural tests of web
+application, and plug the results into Nagios.
 
-As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-with-cucumber): 
+As Bradley Taylor [put it](http://bradley.is/post/82649218/testing-dash-metrics-with-cucumber):
 
-    “Instead of writing boring monitoring plugins from scratch, 
+    “Instead of writing boring monitoring plugins from scratch,
     you can now do behavior driven ops!
 
-    Transform from a grumpy, misanthropic sysadmin to a hipster, 
+    Transform from a grumpy, misanthropic sysadmin to a hipster,
     agile developer instantly.”
 
 
 Quickstart
 ==========
 
- 0. `gem install gemcutter`
- 1. `gem tumble` 
- 2. `gem install cucumber-nagios`
+ 1. `gem install cucumber-nagios`
  3. `cucumber-nagios-gen project bunch-o-tests`
  4. `cd bunch-o-tests`
  5. `gem bundle`
- 6. `bin/cucumber-nagios-gen feature ebay.com.au bidding`
+ 6. `cucumber-nagios-gen feature ebay.com.au bidding`
  7. `bin/cucumber-nagios features/ebay.com.au/bidding.feature`
 
 
@@ -33,30 +31,30 @@ To set up a standalone `cucumber-nagios` project, run:
 
     cucumber-nagios-gen project <project-name>
 
-This will spit out a bunch of files in the directory specified as `<project-name>`. 
+This will spit out a bunch of files in the directory specified as `<project-name>`.
 
 Check the `README` within this directory for specific instructions for managing
-the project. 
+the project.
 
 
 Bundling dependencies
 =====================
 
-Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios 
-project to any machine and have it run. This can be useful if you want to 
+Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios
+project to any machine and have it run. This can be useful if you want to
 develop your tests on one machine, and deploy them to another (like a production
-Nagios server). 
+Nagios server).
 
-You'll need to bundle your dependencies to use cucumber-nagios. 
+You'll need to bundle your dependencies to use cucumber-nagios.
 
-First you need to make sure the following dependencies are installed: 
+First you need to make sure the following dependencies are installed:
 
   - RubyGems
 	- bundler08 gem (automatically pulled in by the cucumber-nagios gem)
 
 To bundle your dependencies, within your project directory run:
 
-    $ gem bundle 
+    $ gem bundle
 
 *Please note*: cucumber-nagios uses `bundler08`, **not** `bundler`. Until the
 `bundler` guys sort their shit out, I refuse to release software that uses it.
@@ -65,31 +63,31 @@ To bundle your dependencies, within your project directory run:
 Deploying to production
 =======================
 
-Once you've copied your project around, just run the bundler again: 
+Once you've copied your project around, just run the bundler again:
 
     $ gem bundle
 
-You'll need to have RubyGems and the bundler gem installed on the system 
+You'll need to have RubyGems and the bundler gem installed on the system
 you're deploying too. I know, this is not optimal, but hopefully the bundler
-gem will handle this better in the future. 
+gem will handle this better in the future.
 
 
 Writing features
 ================
 
 Once you've set up a project, you can use the `bin/cucumber-nagios-gen` command
-to generate new features. It takes two arguments: the site you're testing, and 
-feature you're testing: 
+to generate new features. It takes two arguments: the site you're testing, and
+feature you're testing:
 
     bin/cucumber-nagios-gen feature gnome.org navigation
 
-This will spit out two files: 
+This will spit out two files:
 
     features/gnome.org/navigation.feature
     features/gnome.org/steps/navigation_steps.rb
 
 
-As for writing features, you'll want to have a read of the 
+As for writing features, you'll want to have a read of the
 [Cucumber documentation](http://wiki.github.com/aslakhellesoy/cucumber), however
 your tests will look something like this:
 
@@ -97,63 +95,63 @@ your tests will look something like this:
       To broaden their knowledge
       A user should be able
       To search for things
-    
+
       Scenario: Searching for things
         Given I visit "http://www.google.com"
         When I fill in "q" with "wikipedia"
         And I press "Google Search"
         Then I should see "www.wikipedia.org"
 
-There's a collection of steps that will cover most of the things you'll be 
-testing for in `features/steps/webrat_steps.rb`. 
+There's a collection of steps that will cover most of the things you'll be
+testing for in `features/steps/webrat_steps.rb`.
 
 You can write custom steps for testing specific output and behaviour, e.g.
-in `features/smh.com.au/smh.feature`: 
+in `features/smh.com.au/smh.feature`:
 
     Feature: smh.com.au
       It should be up
       And provide links to content
-    
+
       Scenario: Visiting home page
         When I go to http://smh.com.au/
         Then I should see site navigation
         And there should be a section named "Opinion"
 
-There aren't steps for "Then I should see site navigation", so you have to 
-write one yourself. :-) In `features/smh.com.au/steps/smh_steps.rb`: 
+There aren't steps for "Then I should see site navigation", so you have to
+write one yourself. :-) In `features/smh.com.au/steps/smh_steps.rb`:
 
-    Then /^I should see site navigation$/ do                                                                    
-      doc = Nokogiri::HTML(response.body.to_s)                                                                  
-      doc.css("ul#nav li a").size.should > 5                                                                    
+    Then /^I should see site navigation$/ do
+      doc = Nokogiri::HTML(response.body.to_s)
+      doc.css("ul#nav li a").size.should > 5
     end
 
-You can use Nokogiri for testing responses with XPath matchers and CSS 
-selectors. 
+You can use Nokogiri for testing responses with XPath matchers and CSS
+selectors.
 
-I suggest you use `bin/cucumber` directly so you can get better feedback when 
+I suggest you use `bin/cucumber` directly so you can get better feedback when
 writing your tests:
 
     bin/cucumber --require features/ features/smh/smh.feature
 
-This will output using the default 'pretty' formatter. 
+This will output using the default 'pretty' formatter.
 
 Running
 =======
 
-Invoke the Cucumber feature with the `cucumber-nagios` script: 
+Invoke the Cucumber feature with the `cucumber-nagios` script:
 
     bin/cucumber-nagios features/smh.com.au/smh.feature
 
-`cucumber-nagios` can be run from anywhere: 
+`cucumber-nagios` can be run from anywhere:
 
     /path/to/bin/cucumber-nagios /path/to/features/smh/smh.feature
 
-It should return a standard Nagios-formatted response string: 
+It should return a standard Nagios-formatted response string:
 
     Critical: 0, Warning: 0, 2 okay | passed=2, failed=0, total=2
 
-Steps that fail will show up in the "Critical" total, and steps that pass 
-show up in the "okay" total. 
+Steps that fail will show up in the "Critical" total, and steps that pass
+show up in the "okay" total.
 
 The value printed at the end is in Nagios's Performance Data format, so it
 can be graphed and the like.
@@ -162,24 +160,24 @@ Benchmarking
 ============
 
 You can benchmark your features if you need to test response times for a set of
-site interactions: 
+site interactions:
 
     Feature: slashdot.com
       To keep the geek masses satisfied
       Slashdot must be responsive
-    
+
       Scenario: Visiting a responsive front page
         Given I am benchmarking
         When I go to http://slashdot.org/
         Then the elapsed time should be less than 5 seconds
 
 The elapsed time step can be reused multiple times in the same scenario if you
-need fine grained testing: 
+need fine grained testing:
 
     Feature: slashdot.com
       To keep the geek masses satisfied
       Slashdot must be responsive
-    
+
       Scenario: Visiting news articles
         Given I am benchmarking
         When I go to http://slashdot.org/
@@ -204,7 +202,7 @@ You can test for various conditions on an AMQP message queue.
         Then it should have less than 400 messages
         Then it should have at least 5 consumers
         Then it should have less than 50 messages per consumer
-        
+
 This has been tested using RabbitMQ but uses the amqp gem which should support
 other backends. See features/amqp_steps.rb for all the available steps.
 
@@ -214,12 +212,12 @@ Quirks
 Failure *is* an option (exceptions are good)
 --------------------------------------------
 
-Exceptions raised within your tests will appear in the failed totals, so you 
-don't need to worry about trying to catch them in your own custom steps. 
+Exceptions raised within your tests will appear in the failed totals, so you
+don't need to worry about trying to catch them in your own custom steps.
 
-i.e. if you try fetching a page on a server that is down, or the page returns 
-a 404, the exception raised by Mechanize just gets treated by Cucumber as a 
-test failure. 
+i.e. if you try fetching a page on a server that is down, or the page returns
+a 404, the exception raised by Mechanize just gets treated by Cucumber as a
+test failure.
 
 Using the Steps in another Cucumber suite
 =========================================
@@ -245,7 +243,7 @@ Version control
 It's highly recommend that you store your cucumber-nagios projects in a version
 control system!
 
-To get up and running with git: 
+To get up and running with git:
 
     $ git init
     $ git add .
@@ -263,7 +261,7 @@ Testing
 -------
 
 The gem is thoroughly tested (with Cucumber, no less). The gem's Cucumber
-features live in $gemroot/features/, and can be run with: 
+features live in $gemroot/features/, and can be run with:
 
     $ cucumber --require features/ features/installing.feature
     $ cucumber --require features/ features/creating.feature

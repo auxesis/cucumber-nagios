@@ -18,38 +18,72 @@ module CucumberNagiosGenerators
       File.join(@destination_root, name)
     end
 
+    @root = Pathname.new(File.dirname(__FILE__)).parent.join('lib/cucumber/nagios')
+
     desc "Generate a new self-contained cucumber-nagios project."
     first_argument :name, :required => true, :desc => "Project name"
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
 
-    directory :steps, ::File.join(File.dirname(__FILE__), '..', 'lib', 'cucumber', 'nagios', 'steps'), 'features/steps'
-    directory :features, ::File.join(File.dirname(__FILE__), '..', 'lib', 'cucumber', 'nagios', 'support'), 'features/support'
+    directory :steps, @root.join('steps'), 'features/steps'
+    directory :features, @root.join('support'), 'features/support', :after => :readme
 
     glob!
+
+    def readme(action)
+      puts <<-README
+
+Your new cucumber-nagios project has been generated.
+
+To get going, you'll need to bundle gems into the project:
+
+  $ gem bundle
+
+It's *highly* recommended you version control your project:
+
+  - with Git: git init ; git add .
+  - with Bazaar: bzr init ; bzr add
+
+      README
+    end
 
   end
 
   desc "Generate a cucumber-nagios project."
   add :project, ProjectGenerator
 
+
+  # feature generator
+  class FeatureGenerator < Templater::Generator
+    def self.source_root
+      File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'project', 'lib', 'generators', 'feature')
+    end
+
+    desc <<-DESC
+      Generate a cucumber feature. Takes a two arguments:
+        bin/cucumber-nagios-gen feature <site-name> <feature-name>
+    DESC
+
+    first_argument :site, :required => true, :desc => "Site name"
+    second_argument :feature, :required => true, :desc => "Feature name"
+
+    template :feature do |template|
+      template.source = "%feature_name%.feature"
+      template.destination = "features/#{site}/#{feature}.feature"
+    end
+
+    template :step do |template|
+      template.source = "%feature_name%_steps.rb"
+      template.destination = "features/#{site}/steps/#{feature}_steps.rb"
+    end
+
+  end
+
+  desc "Generators for a cucumber-nagios project"
+  add :feature, FeatureGenerator
+
 end
 
-
 CucumberNagiosGenerators.run_cli Dir.pwd, 'cucumber-nagios-gen', Cucumber::Nagios::VERSION, ARGV
-
-puts <<-README
-Your new cucumber-nagios project is set up.
-
-To get going, you'll need to bundle gems into the project:
-  
-  $ gem bundle
-
-It's highly recommended you version control your projects:
-  
-  - with Git: git init ; git add . 
-  - with Bazaar: bzr init ; bzr add 
-
-README
 

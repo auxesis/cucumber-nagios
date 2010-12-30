@@ -1,6 +1,6 @@
-Feature: Creating new project 
-  To test websites 
-  A cucumber-nagios projert
+Feature: Creating new project
+  To test websites
+  A cucumber-nagios project
   Must be created
 
   Scenario: Create a project
@@ -8,4 +8,4 @@ Feature: Creating new project
     When I create a new project called "great-website-tests"
     And I freeze in dependencies
     Then my gems directory should be populated
-    
+

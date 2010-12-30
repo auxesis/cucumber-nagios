@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cucumber-nagios}
-  s.version = "0.8.2"
+  s.version = "0.8.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lindsay Holmwood"]
-  s.date = %q{2010-12-30}
+  s.date = %q{2010-12-31}
   s.default_executable = %q{cucumber-nagios-gen}
   s.description = %q{cucumber-nagios helps you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios.}
   s.email = %q{lindsay@holmwood.id.au}

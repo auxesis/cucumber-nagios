@@ -1,35 +1,28 @@
 #!/usr/bin/env ruby
 
+require 'pathname'
+
 unless ARGV[0]
   puts "Usage: #{__FILE__} <feature> [--debug|--pretty]"
   exit 4
 end
 
-__DIR__ = File.expand_path(File.dirname(__FILE__))
-features_dir = File.expand_path(File.join(__DIR__, '..', 'features'))
-
-feature = ARGV[0]
-unless File.exists?(feature)
-  feature = File.join(features_dir, ARGV[0]) 
-end
+root          = Pathname.new(File.dirname(__FILE__)).expand_path
+feature_dir   = root.join('..', 'features').expand_path
+feature, line = ARGV[0].split(':')
 
 unless File.exist?(feature)
-  puts "Error: feature file doesn't exist!"
+  puts "Error: feature file '#{feature}' doesn't exist!"
   exit 4
 end
 
-command_parts = []
-command_parts << "#{__DIR__}/cucumber"
-command_parts << "--require #{features_dir}"
-
-if ARGV.include?("--pretty")
-  command_parts << "--format pretty"
-else
-  command_parts << "--format Cucumber::Formatter::Nagios"
-end
-
-command_parts << feature
-command = command_parts.join(' ')
+parts = []
+parts << "cucumber"
+parts << "--require #{feature_dir}"
+parts << "--format pretty" if ARGV.include?("--pretty")
+parts << "--format Cucumber::Formatter::Nagios" unless ARGV.include?("--pretty")
+parts << "#{line ? "#{feature}:#{line}" : feature }"
+command = parts.join(' ')
 
 if ARGV.grep(/^\-\-debug$/).size > 0
   puts command

@@ -11,16 +11,18 @@ title: cucumber-nagios
 
 <blockquote>
   <pre class="code">
+{% highlight cucumber %}
 Feature: google.com
   It should be up
   And I should be able to search for things
 
   Scenario: Searching for things
-    When I go to "http://www.google.com"
+    When I go to "http://www.google.com.au/"
     And I fill in "q" with "wikipedia"
     And I press "Google Search"
     Then I should see "www.wikipedia.org"
   </pre>
+{% endhighlight %}
 </blockquote>
 
 <p>
@@ -30,7 +32,7 @@ Feature: google.com
 <blockquote>
   <pre class="code">
 $ cucumber-nagios google.feature
-Critical: 0, Warning: 0, 4 okay | passed=4, failed=0
+CUCUMBER OK - Critical: 0, Warning: 0, 4 okay | passed=4; failed=0; nosteps=0; total=4; time=3
   </pre>
 </blockquote>
 
@@ -77,8 +79,16 @@ $ gem bundle
   project and put it on another machine easily.
 </p>
 <p class="notice">
-<img src="images/important.png"/>
+  <img src="images/important.png"/>
   Please note, the RubyGems Bundler requires RubyGems 1.3.5 or greater.
+</p>
+
+<p class="notice">
+  <img src="images/important.png"/>
+  Windows users: you need to download and install the
+  <a href="http://rubyinstaller.org/downloads/">Ruby Installer</a> <em>and</em>
+  the <a href="http://rubyinstaller.org/add-ons/devkit/">development kit</a>,
+  otherwise <code>gem install cucumber-nagios</code> will fail.
 </p>
 
 <h2>Using</h2>
@@ -107,7 +117,7 @@ and <code class="arg">bidding</code> the feature you want to test.
 <blockquote>
   <pre class="code">
 $ bin/cucumber-nagios features/ebay.com.au/bidding.feature
-Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
+CUCUMBER OK - Critical: 0, Warning: 0, 4 okay | passed=4; failed=0; nosteps=0; total=4; time=6
   </pre>
 </blockquote>
 
@@ -142,7 +152,7 @@ Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
   with <code>cucumber-nagios</code>.</li>
   <li>Olivier Jan at nagios-fr.org
   introduces <code>cucumber-nagios</code> <a
-    href="http://www.nagios-fr.org/2009/11/cucumber-nagios/">en français</a>.
+    href="http://www.nagios-fr.org/2009/11/cucumber-nagios/">en Français</a>.
   </li>
 
 </ul>
@@ -150,7 +160,7 @@ Critical: 0, Warning: 0, 4 okay | value=4.000000;;;;
 <h2>Friends</h2>
 <ul class="related">
   <li><a href="http://cukes.info/">Cucumber</a>, Behaviour Driven Development with elegance and joy.</li>
-  <li><a href="http://flapjack-project.com/">Flapjack</a>, the delicious monitoring system.</li>
   <li><a href="http://collectd.org/">collectd</a>, the system statistics collection daemon.</li>
   <li><a href="http://puppet.reductivelabs.com/">Puppet</a>, configuration management & automated infrastructure.</li>
+  <li><a href="http://flapjack-project.com/">Flapjack</a>, the delicious monitoring system.</li>
 </ul>

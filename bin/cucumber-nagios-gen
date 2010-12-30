@@ -61,7 +61,7 @@ It's *highly* recommended you version control your project
 
     desc <<-DESC
       Generate a cucumber feature. Takes a two arguments:
-        bin/cucumber-nagios-gen feature <site-name> <feature-name>
+        cucumber-nagios-gen feature <site-name> <feature-name>
     DESC
 
     first_argument :site, :required => true, :desc => "Site name"

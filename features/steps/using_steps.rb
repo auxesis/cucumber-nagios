@@ -7,7 +7,7 @@ Given /^a project called "([^\"]*)" is created and frozen$/ do |project_name|
 end
 
 When /^I generate a new feature called "([^\"]*)" for "([^\"]*)"$/ do |feature, site|
-  silent_system("cd /tmp/#{@project_name} ; bin/cucumber-nagios-gen feature #{site} #{feature}")
+  silent_system("cd /tmp/#{@project_name} ; cucumber-nagios-gen feature #{site} #{feature}")
 end
 
 Then /^a feature file should exist for "([^\"]*)" on "([^\"]*)"$/ do |feature, site|

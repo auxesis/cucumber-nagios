@@ -2,30 +2,30 @@
 Bundling dependencies
 =====================
 
-Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios 
-project to any machine and have it run. This can be useful if you want to 
+Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios
+project to any machine and have it run. This can be useful if you want to
 develop your tests on one machine, and deploy them to another (like a production
-Nagios server). 
+Nagios server).
 
-You'll need to bundle your dependencies to use cucumber-nagios. 
+You'll need to bundle your dependencies to use cucumber-nagios.
 
-First you need to make sure the following dependencies are installed: 
+First you need to make sure the following dependencies are installed:
 
   - RubyGems
-	- bundler gem (automatically pulled in by the cucumber-nagios gem)
+  - bundler gem (automatically pulled in by the cucumber-nagios gem)
 
 To bundle your dependencies, within your project directory run:
 
-    $ gem bundle 
+    $ gem bundle
 
 
 Version control
 ===============
 
-It's strongly recommend that you store your cucumber-nagios projects in a 
+It's strongly recommend that you store your cucumber-nagios projects in a
 version control system!
 
-To get up and running with git: 
+To get up and running with git:
 
     $ git init
     $ git add .
@@ -43,25 +43,25 @@ To get up and running with bzr:
 Writing features
 ================
 
-You can use the bin/cucumber-nagios-gen command to generate new features for
-you. It takes two arguments: the site you're testing, and feature you're testing: 
+You can use the cucumber-nagios-gen command to generate new features for
+you. It takes two arguments: the site you're testing, and feature you're testing:
 
-    bin/cucumber-nagios-gen feature gnome.org navigation
+    cucumber-nagios-gen feature gnome.org navigation
 
-This will generate two files: 
+This will generate two files:
 
     features/gnome.org/navigation.feature
     features/gnome.org/steps/navigation_steps.rb
 
 
-As for writing features, you'll want to have a read of the Cucumber 
+As for writing features, you'll want to have a read of the Cucumber
 documentation[0], however your tests will look something like this:
 
     Feature: google.com.au
       To broaden their knowledge
       A user should be able
       To search for things
-    
+
       Scenario: Searching for things
         Given I visit "http://www.google.com"
         When I fill in "q" with "wikipedia"
@@ -69,56 +69,56 @@ documentation[0], however your tests will look something like this:
         Then I should see "www.wikipedia.org"
 
 
-There's a collection of steps that will cover most of the things you'll be 
-testing for in features/steps/webrat_steps.rb. 
+There's a collection of steps that will cover most of the things you'll be
+testing for in features/steps/webrat_steps.rb.
 
 You can write custom steps for testing specific output and behaviour, e.g.
-in features/smh.com.au/smh.feature: 
+in features/smh.com.au/smh.feature:
 
     Feature: smh.com.au
       It should be up
       And provide links to content
-    
+
       Scenario: Visiting home page
         When I go to http://smh.com.au/
         Then I should see site navigation
         And there should be a section named "Opinion"
 
-There aren't steps for "Then I should see site navigation", so you have to 
-write one yourself. :-) In features/smh.com.au/steps/smh_steps.rb: 
+There aren't steps for "Then I should see site navigation", so you have to
+write one yourself. :-) In features/smh.com.au/steps/smh_steps.rb:
 
-    Then /^I should see site navigation$/ do                                                                    
-      doc = Nokogiri::HTML(response.body.to_s)                                                                  
-      doc.css("ul#nav li a").size.should > 5                                                                    
+    Then /^I should see site navigation$/ do
+      doc = Nokogiri::HTML(response.body.to_s)
+      doc.css("ul#nav li a").size.should > 5
     end
 
-You can use Nokogiri for testing responses with XPath matchers and CSS 
-selectors. 
+You can use Nokogiri for testing responses with XPath matchers and CSS
+selectors.
 
-I suggest you use bin/cucumber directly so you can get better feedback when 
+I suggest you use `cucumber` directly so you can get better feedback when
 writing your tests:
 
-    bin/cucumber --require features/ features/smh/smh.feature
+    cucumber --require features/ features/smh/smh.feature
 
-This will output using the default 'pretty' formatter. 
+This will output using the default 'pretty' formatter.
 
 Running
 =======
 
-Invoke the Cucumber feature with the cucumber-nagios script: 
+Invoke the Cucumber feature with the cucumber-nagios script:
 
     bin/cucumber-nagios features/smh.com.au/smh.feature
 
-cucumber-nagios can be run from anywhere: 
+cucumber-nagios can be run from anywhere:
 
     /path/to/bin/cucumber-nagios /path/to/features/smh/smh.feature
 
-It should return a standard Nagios-formatted response string: 
+It should return a standard Nagios-formatted response string:
 
     Critical: 0, Warning: 0, 2 okay | passed=2, failed=0, total=2
 
-Steps that fail will show up in the "Critical" total, and steps that pass 
-show up in the "okay" total. 
+Steps that fail will show up in the "Critical" total, and steps that pass
+show up in the "okay" total.
 
 The value printed at the end is in Nagios's Performance Data format, so it
 can be graphed and the like.
@@ -130,37 +130,37 @@ Quirks & Caveats
 Multiple scenarios
 ------------------
 
-You may want to think about keeping to one scenario to a file, otherwise 
+You may want to think about keeping to one scenario to a file, otherwise
 you'll get multiple lines of output for a test:
 
     Critical: 1, Warning: 0, 2 okay | passed=2, failed=1, total=3
     Critical: 1, Warning: 0, 4 okay | passed=4, failed=1, total=5
 
-That said, Nagios should only read the last line, so this might be an ok 
+That said, Nagios should only read the last line, so this might be an ok
 behaviour when you want to test for an aggregate of failures across a site.
 
 
 Failure *is* an option (exceptions are good)
 --------------------------------------------
 
-Exceptions raised within your tests will appear in the failed totals, so you 
-don't need to worry about trying to catch them in your own custom steps. 
+Exceptions raised within your tests will appear in the failed totals, so you
+don't need to worry about trying to catch them in your own custom steps.
 
-i.e. if you try fetching a page on a server that is down, or the page returns 
-a 404, the exception raised by Mechanize just gets treated by Cucumber as a 
-test failure. 
+i.e. if you try fetching a page on a server that is down, or the page returns
+a 404, the exception raised by Mechanize just gets treated by Cucumber as a
+test failure.
 
 
 Deploying to production
 =======================
 
-Once you've copied your project around, just run the bundler again: 
+Once you've copied your project around, just run the bundler again:
 
     $ gem bundle
 
-You'll need to have RubyGems and the bundler gem installed on the system 
+You'll need to have RubyGems and the bundler gem installed on the system
 you're deploying too. I know, this is not optimal, but hopefully the bundler
-gem will handle this better in the future. 
+gem will handle this better in the future.
 
 
 [0] http://wiki.github.com/aslakhellesoy/cucumber

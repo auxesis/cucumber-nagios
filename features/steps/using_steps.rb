@@ -3,7 +3,7 @@ Given /^a project called "([^\"]*)" is created and frozen$/ do |project_name|
   Given 'cucumber-nagios is installed'
   When "I create a new project called \"#{@project_name}\""
   And 'I freeze in dependencies'
-  Then 'my gems directory should be populated'
+  Then 'a Gemfile lock should be created'
 end
 
 When /^I generate a new feature called "([^\"]*)" for "([^\"]*)"$/ do |feature, site|

@@ -12,7 +12,7 @@ body {
 /* styles */
 body {
   font-size: 1.3em;
-  background-color: #0e1111;
+  background-color: #171717;
   font-family: Georgia, Times New Roman, serif;
 }
 
@@ -40,9 +40,9 @@ blockquote {
 }
 
 pre.code {
-  background-color: #2e3436;
+  background-color: #333333;
   color: white;
-  padding: 16px 20px 0px;
+  padding: 12px 16px 0px;
   font-family: Lucida Console, monospace;
   letter-spacing: 1px;
   font-size: 0.8em;
@@ -63,20 +63,20 @@ code {
 
 code.cmd {
   color: #fce99c;
-  background-color: #2e3436;
+  background-color: #333333;
   padding: 4px;
 }
 
 code.arg {
   color: #fca69c;
-  background-color: #2e3436;
+  background-color: #333333;
   padding: 4px;
 }
 
 
 code.file {
   color: #a3e9cf;
-  background-color: #2e3436;
+  background-color: #333333;
   padding: 4px;
 }
 

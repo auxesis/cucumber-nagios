@@ -23,11 +23,21 @@ Quickstart
  6. `cucumber-nagios-gen feature ebay.com.au bidding`
  7. `bin/cucumber-nagios features/ebay.com.au/bidding.feature`
 
+Installing
+==========
+
+Install the gem with:
+
+    gem install cucumber-nagios
+
+This will add the `cucumber-nagios-gen` command to your path, and make the
+shipped cucumber-nagios steps available to other projects using Cucumber.
+
 
 Setting up a project
 ====================
 
-To set up a standalone `cucumber-nagios` project, run:
+After installing the cucumer-nagios gem, set up a standalone project with:
 
     cucumber-nagios-gen project <project-name>
 
@@ -41,32 +51,18 @@ Bundling dependencies
 =====================
 
 Bundling cucumber-nagios's dependencies allows you to drop your cucumber-nagios
-project to any machine and have it run. This can be useful if you want to
-develop your tests on one machine, and deploy them to another (like a production
-Nagios server).
-
-You'll need to bundle your dependencies to use cucumber-nagios.
+project on any machine and have it run. This solves the case of developing your
+checks on your local machine, and deploying them on a production monitoring
+server.
 
 First you need to make sure the following dependencies are installed:
 
   - RubyGems
   - `bundler` gem (automatically pulled in by the `cucumber-nagios` gem)
 
-To bundle your dependencies, within your project directory run:
+Then to bundle your dependencies, within your project directory run:
 
     $ bundle install
-
-Deploying to production
-=======================
-
-Once you've copied your project around, just run the bundler again:
-
-    $ bundle install
-
-You'll need to have RubyGems and the bundler gem installed on the system
-you're deploying too. I know, this is not optimal, but hopefully the bundler
-gem will handle this better in the future.
-
 
 Writing features
 ================
@@ -113,7 +109,7 @@ in `features/smh.com.au/smh.feature`:
         Then I should see site navigation
         And there should be a section named "Opinion"
 
-There aren't steps for "Then I should see site navigation", so you have to
+There aren't steps for `Then I should see site navigation`, so you have to
 write one yourself. :-) In `features/smh.com.au/steps/smh_steps.rb`:
 
     Then /^I should see site navigation$/ do
@@ -202,6 +198,16 @@ You can test for various conditions on an AMQP message queue.
 This has been tested using RabbitMQ but uses the amqp gem which should support
 other backends. See features/amqp_steps.rb for all the available steps.
 
+Deploying to production
+=======================
+
+As per the install instructions above, make sure you have RubyGems and the `bundler`
+gem installed.
+
+Once you've copied your project to your monitoring server, just run bundler again:
+
+    $ bundle install
+
 Quirks
 ======
 
@@ -218,25 +224,28 @@ test failure.
 Using the Steps in another Cucumber suite
 =========================================
 
-If you want to use the steps defined in cucumber-nagios elsewhere, you can
-require the steps in `features/support/env` like so:
+If you want to use the steps shipped with cucumber-nagios elsewhere, you can
+require them by adding the following line to `features/support/env.rb` like so:
 
-    # All
     require 'cucumber/nagios/steps'
 
-    # Or one by one
+Or just require the steps you care about:
+
     require 'cucumber/nagios/steps/ssh'
     require 'cucumber/nagios/steps/ping'
 
 Using the Formatter in another Cucumber suite
 =============================================
 
+Once installed as a gem, the `cucumber-nagios` formatter is available in any
+other Cucumber test suite:
+
     cucumber --format Cucumber::Formatter::Nagios features/foo.feature
 
 Version control
 ===============
 
-It's highly recommend that you store your cucumber-nagios projects in a version
+It's _strongly_ recommend that you store your cucumber-nagios projects in a version
 control system!
 
 To get up and running with git:
@@ -248,12 +257,12 @@ To get up and running with git:
 `.gitignore` is created when you generate a project.
 
 Testing
--------
+=======
 
 The gem is thoroughly tested (with Cucumber, no less). The gem's Cucumber
 features live in $gemroot/features/, and can be run with:
 
-    $ cucumber --require features/ features/installing.feature
-    $ cucumber --require features/ features/creating.feature
-    $ cucumber --require features/ features/using.feature
+    $ cucumber features/installing.feature
+    $ cucumber features/creating.feature
+    $ cucumber features/using.feature
 

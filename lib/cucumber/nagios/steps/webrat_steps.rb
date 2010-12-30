@@ -1,4 +1,4 @@
-When /^I go to (.*)$/ do |path|
+When /^I go to "(.*)"$/ do |path|
   visit path
 end
 

@@ -71,7 +71,7 @@ Once you've set up a project, you can use the `bin/cucumber-nagios-gen` command
 to generate new features. It takes two arguments: the site you're testing, and
 feature you're testing:
 
-    bin/cucumber-nagios-gen feature gnome.org navigation
+    cucumber-nagios-gen feature gnome.org navigation
 
 This will spit out two files:
 

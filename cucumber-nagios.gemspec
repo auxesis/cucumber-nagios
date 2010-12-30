@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "README.md",
      "Rakefile",
      "TODO",
+     "VERSION",
      "bin/cucumber-nagios-gen",
      "cucumber-nagios.gemspec",
      "features/commands.feature",

@@ -1,6 +1,6 @@
 When /^I build the gem$/ do
-  project_root = File.join(File.dirname(__FILE__), '..', '..')
-  rakefile = File.join(project_root, 'Rakefile')
+  project_root = Pathname.new(File.dirname(__FILE__)).parent.parent.expand_path
+  rakefile     = project_root.join('Rakefile')
   File.exist?(rakefile).should be_true
 
   silent_system("rake -f #{rakefile} build").should be_true

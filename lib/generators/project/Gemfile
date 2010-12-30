@@ -1,4 +1,4 @@
-# list of dependencies for a cucumber-nagios project
+source :rubygems
 
 gem "cucumber-nagios"
 gem "cucumber", "0.10.0"

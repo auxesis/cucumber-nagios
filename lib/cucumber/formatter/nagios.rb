@@ -9,6 +9,7 @@ module Cucumber
         @passed  = []
         @warning = []
         @io = io
+        @start_time = Time.now
       end
 
       def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
@@ -32,13 +33,15 @@ module Cucumber
 
       private
       def print_summary
-        @total = @failed.size + @passed.size + @warning.size
-        @status = @failed.size > 0 && "CRITICAL" || @warning.size > 0 && "WARNING" || "OK"
+        @total    = @failed.size + @passed.size + @warning.size
+        @status   = @failed.size > 0 && "CRITICAL" || @warning.size > 0 && "WARNING" || "OK"
+        @run_time = (Time.now - @start_time).to_i
 
         service_output   = [ "CUCUMBER #{@status} - Critical: #{@failed.size}",
                              "Warning: #{@warning.size}", "#{@passed.size} okay" ]
         performance_data = [ "passed=#{@passed.size}", "failed=#{@failed.size}",
-                             "nosteps=#{@warning.size}", "total=#{@total}" ]
+                             "nosteps=#{@warning.size}", "total=#{@total}",
+                             "time=#{@run_time}" ]
         message = "#{service_output.join(', ')} | #{performance_data.join('; ')}\n"
 
         @io.print(message)
@@ -56,7 +59,6 @@ module Cucumber
           @warning << step_match
         end
       end
-
 
     end
   end

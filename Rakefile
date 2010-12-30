@@ -14,14 +14,16 @@ begin
     gem.authors = ["Lindsay Holmwood"]
     gem.has_rdoc = false
 
+    gem.add_dependency('cucumber', '>= 0.10.0')
+    gem.add_dependency('rspec', '>= 2.3.0')
+    gem.add_dependency('webrat', '= 0.7.2')
+    gem.add_dependency('mechanize', '= 1.0.0')
     gem.add_dependency('templater', '>= 1.0.0')
-    gem.add_dependency('rake', '>= 0.8.3')
-    gem.add_dependency('bundler08', '= 0.8.5')
-    gem.add_dependency('cucumber', '>= 0.6.1')
     gem.add_dependency('net-ssh', '= 2.0.18')
-    gem.add_dependency('webrat', '= 0.7.0')
     gem.add_dependency('amqp', '= 0.6.7')
-    gem.add_dependency('rspec', '>= 1.3.0')
+    gem.add_dependency('bundler', '= 1.0.7')
+
+    gem.add_development_dependency('rake', '>= 0.8.3')
 
     gem.bindir = "bin"
     gem.executables = %w(cucumber-nagios-gen)

@@ -33,6 +33,11 @@ Install the gem with:
 This will add the `cucumber-nagios-gen` command to your path, and make the
 shipped cucumber-nagios steps available to other projects using Cucumber.
 
+*Windows users* - you need to download and install the
+[Ruby Installer](http://rubyinstaller.org/downloads/) and the
+[development kit](http://rubyinstaller.org/add-ons/devkit/), otherwise
+`gem install cucumber-nagios` will fail.
+
 
 Setting up a project
 ====================

@@ -19,7 +19,7 @@ Quickstart
  1. `gem install cucumber-nagios`
  3. `cucumber-nagios-gen project bunch-o-tests`
  4. `cd bunch-o-tests`
- 5. `gem bundle`
+ 5. `bundle install`
  6. `cucumber-nagios-gen feature ebay.com.au bidding`
  7. `bin/cucumber-nagios features/ebay.com.au/bidding.feature`
 
@@ -50,22 +50,18 @@ You'll need to bundle your dependencies to use cucumber-nagios.
 First you need to make sure the following dependencies are installed:
 
   - RubyGems
-	- bundler08 gem (automatically pulled in by the cucumber-nagios gem)
+  - `bundler` gem (automatically pulled in by the `cucumber-nagios` gem)
 
 To bundle your dependencies, within your project directory run:
 
-    $ gem bundle
-
-*Please note*: cucumber-nagios uses `bundler08`, **not** `bundler`. Until the
-`bundler` guys sort their shit out, I refuse to release software that uses it.
-
+    $ bundle install
 
 Deploying to production
 =======================
 
 Once you've copied your project around, just run the bundler again:
 
-    $ gem bundle
+    $ bundle install
 
 You'll need to have RubyGems and the bundler gem installed on the system
 you're deploying too. I know, this is not optimal, but hopefully the bundler
@@ -249,13 +245,7 @@ To get up and running with git:
     $ git add .
     $ git commit -m 'created cucumber-nagios project'
 
-To get up and running with bzr:
-
-    $ bzr init
-    $ bzr add
-    $ bzr commit -m 'created cucumber-nagios project'
-
-`.bzrignore` and `.gitignores` are created when you generate a project.
+`.gitignore` is created when you generate a project.
 
 Testing
 -------

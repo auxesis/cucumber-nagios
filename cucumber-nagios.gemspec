@@ -1,15 +1,15 @@
 Gem::Specification.new do |s|
   s.name = 'cucumber-nagios'
-  s.version = '0.7.6'
-  s.date = '2010-06-23'
+  s.version = '0.8.0'
+  s.date = '2010-12-30'
 
-  s.summary = "systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh"
-  s.description = "cucumber-nagios lets you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios"
+  s.summary = "Systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh."
+  s.description = "cucumber-nagios helps you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios."
 
   s.rubyforge_project = 'cucumber-nagios'
   s.authors = ['Lindsay Holmwood']
   s.email = 'lindsay@holmwood.id.au'
-  s.homepage = 'http://auxesis.github.com/cucumber-nagios/'
+  s.homepage = 'http://cucumber-nagios.org/'
   s.has_rdoc = false
 
   s.add_dependency('templater', '>= 1.0.0')

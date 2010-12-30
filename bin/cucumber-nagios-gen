@@ -38,12 +38,11 @@ Your new cucumber-nagios project has been generated.
 
 To get going, you'll need to bundle gems into the project:
 
-  $ gem bundle
+  $ bundle install
 
-It's *highly* recommended you version control your project:
+It's *highly* recommended you version control your project
 
-  - with Git: git init ; git add .
-  - with Bazaar: bzr init ; bzr add
+  $ git init ; git add .
 
       README
     end

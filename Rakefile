@@ -1,41 +1,77 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 
 require 'rubygems'
-require 'fileutils'
+require 'rake'
 
-begin 
-  require 'cucumber/rake/task'
-   
-  Cucumber::Rake::Task.new do |t|
-    t.cucumber_opts = "--require features/"
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "cucumber-nagios"
+    gem.summary = "Systems testing plugin for Nagios using Cucumber/Webrat/Mechanize/net-ssh."
+    gem.description = "cucumber-nagios helps you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios."
+    gem.email = "lindsay@holmwood.id.au"
+    gem.homepage = "http://cucumber-nagios.org/"
+    gem.authors = ["Lindsay Holmwood"]
+    gem.has_rdoc = false
+
+    gem.add_dependency('templater', '>= 1.0.0')
+    gem.add_dependency('rake', '>= 0.8.3')
+    gem.add_dependency('bundler08', '= 0.8.5')
+    gem.add_dependency('cucumber', '>= 0.6.1')
+    gem.add_dependency('net-ssh', '= 2.0.18')
+    gem.add_dependency('webrat', '= 0.7.0')
+    gem.add_dependency('amqp', '= 0.6.7')
+    gem.add_dependency('rspec', '>= 1.3.0')
+
+    gem.bindir = "bin"
+    gem.executables = %w(cucumber-nagios-gen)
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+end
+
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+end
+
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |test|
+    test.libs << 'test'
+    test.pattern = 'test/**/test_*.rb'
+    test.verbose = true
   end
 rescue LoadError
-end
-
-
-desc "build gem"
-task :build do 
-  system("gem build cucumber-nagios.gemspec")
-
-  FileUtils.mkdir_p('pkg')
-  puts
-  Dir.glob("cucumber-nagios-*.gem").each do |gem|
-    dest = File.join('pkg', gem)
-    FileUtils.mv(gem, dest)
-    puts "New gem in #{dest}"
+  task :rcov do
+    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
   end
 end
 
-desc "push gem"
-task :push do 
-  filenames = Dir.glob("pkg/*.gem")
-  filenames_with_times = filenames.map do |filename| 
-    [filename, File.mtime(filename)] 
-  end
-  
-  oldest = filenames_with_times.sort_by { |tuple| tuple.last }.last
-  oldest_filename = oldest.first
+task :test => :check_dependencies
 
-  command = "gem push #{oldest_filename}"
-  system(command)
+begin
+  require 'cucumber/rake/task'
+  Cucumber::Rake::Task.new(:features)
+
+  task :features => :check_dependencies
+rescue LoadError
+  task :features do
+    abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
+  end
+end
+
+task :default => :test
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "cucumber-nagios #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end

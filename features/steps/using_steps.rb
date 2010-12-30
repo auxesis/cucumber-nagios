@@ -29,3 +29,7 @@ When /^the "([^\"]*)" feature on "([^\"]*)" checks for something preposterous$/ 
   end
 end
 
+Then /^"([^"]*)" in the "([^"]*)" project should not exist$/ do |file, project_name|
+  filename = File.join(file, project_name)
+  File.exists?(filename).should be_false
+end

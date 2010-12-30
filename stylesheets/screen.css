@@ -40,8 +40,8 @@ blockquote {
 }
 
 pre.code {
-  background-color: #333333;
-  color: white;
+  background-color: #3b3b3b;
+  color: #efefef;
   padding: 12px 16px 0px;
   font-family: Lucida Console, monospace;
   letter-spacing: 1px;
@@ -75,7 +75,7 @@ code.arg {
 
 
 code.file {
-  color: #a3e9cf;
+  color: #93ccca;
   background-color: #333333;
   padding: 4px;
 }
@@ -90,7 +90,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #204a87;
+  color: #115da8;
 }
 
 a:hover {

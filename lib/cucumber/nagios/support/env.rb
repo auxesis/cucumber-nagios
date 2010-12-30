@@ -1,8 +1,6 @@
 require 'cucumber/nagios'
-
-#For standalone execution
-
 require 'webrat/adapters/mechanize'
+require 'webrat_logging_patches'
 
 class ResponseHelper
   def response

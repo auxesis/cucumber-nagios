@@ -1,6 +1,6 @@
 Feature: Using features
   To test websites
-  A cucumber feature 
+  A cucumber feature
   Must be created
 
   Scenario: Create a feature
@@ -13,9 +13,15 @@ Feature: Using features
     Given a project called "passing-features" is created and frozen
     When I generate a new feature called "homepage" for "github.com"
     Then the "homepage" feature on "github.com" should exit cleanly
-  
+
   Scenario: Run a failing feature
     Given a project called "failing-features" is created and frozen
     When I generate a new feature called "profile" for "github.com"
     And the "profile" feature on "github.com" checks for something preposterous
     Then the "profile" feature on "github.com" should not exit cleanly
+
+  Scenario: webrat.log output
+    Given a project called "passing-features" is created and frozen
+    When I generate a new feature called "homepage" for "github.com"
+    Then the "homepage" feature on "github.com" should exit cleanly
+    Then "webrat.log" in the "passing-features" project should not exist

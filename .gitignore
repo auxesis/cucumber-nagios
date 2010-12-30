@@ -1,11 +1,21 @@
+## MAC OS
 .DS_Store
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
 *~
-.#*
-.bzr
-.bzrignore
-.*.swp
-gems/specifications/*
-gems/gems/*
-gems/bin/*
-cucumber-nagios*.gem
-!lib/generators/project/.bzrignore
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg
+
+## PROJECT::SPECIFIC

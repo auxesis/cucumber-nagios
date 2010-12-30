@@ -67,7 +67,7 @@ Then to bundle your dependencies, within your project directory run:
 Writing features
 ================
 
-Once you've set up a project, you can use the `bin/cucumber-nagios-gen` command
+Once you've set up a project, you can use the `cucumber-nagios-gen` command
 to generate new features. It takes two arguments: the site you're testing, and
 feature you're testing:
 

@@ -1,5 +1,6 @@
 Feature: HTTP interations
 
+  @steps
   Scenario: File exists
     Given I am HTTP digest authenticated with the following credentials:
      | username | password |

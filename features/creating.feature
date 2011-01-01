@@ -3,6 +3,7 @@ Feature: Creating new project
   A cucumber-nagios project
   Must be created
 
+  @create
   Scenario: Create a project
     Given cucumber-nagios is installed
     When I create a new project called "great-website-tests"

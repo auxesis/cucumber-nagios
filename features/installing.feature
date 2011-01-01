@@ -3,6 +3,7 @@ Feature: Installation
   A user
   Must be able to install the gem
 
+  @install
   Scenario: Installing the gem
     When I build the gem
     And I install the latest gem

@@ -116,7 +116,7 @@ module CucumberNagiosGenerators
 
   add :feature, FeatureGenerator
 
-  desc "Generators for a cucumber-nagios project"
+  desc "Generators for cucumber-nagios projects."
 
 end
 

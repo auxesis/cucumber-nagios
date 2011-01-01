@@ -13,7 +13,7 @@ module CucumberNagiosGenerators
     def initialize(destination_root, options = {}, *args)
       super
       @readme = []
-      @readme << "<%= color('Your new cucumber-nagios project has been generated!', :green) %>"
+      @readme << "<%= color('Your new cucumber-nagios project can be found in #{self.destination_root}.', :green) %>"
       @readme << ""
       @readme << "Next, install the necessary RubyGems with:"
       @readme << ""
@@ -26,14 +26,19 @@ module CucumberNagiosGenerators
     end
 
     def destination_root
-      # takes :name from first_argument
-      File.join(@destination_root, name)
+      if options[:directory]
+        options[:directory].to_s
+      else
+        # takes :name from first_argument
+        File.join(@destination_root, name)
+      end
     end
 
     @root = Pathname.new(File.dirname(__FILE__)).parent.join('lib/cucumber/nagios')
 
     desc "Generate a cucumber-nagios project."
     first_argument :name, :required => true, :desc => "Project name"
+    option :directory, :desc => "specify the directory to generate the project into"
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
@@ -51,9 +56,12 @@ module CucumberNagiosGenerators
     def git_init
       if system("which git > /dev/null 2>&1")
         Dir.chdir(destination_root) do
-          system("git init -q")
-          system("git add .")
-          system("git commit -qm 'Initial commit to #{name}.' .")
+          git_directory = File.join(destination_root, '.git')
+          if not File.directory?(git_directory)
+            system("git init -q")
+            system("git add .")
+            system("git commit -qm 'Initial commit to #{name}.' .")
+          end
         end
 
         @readme << "Your project has been initialised as a git repository."

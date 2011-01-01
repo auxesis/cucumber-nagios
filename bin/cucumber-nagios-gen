@@ -3,12 +3,24 @@
 require 'rubygems'
 require 'templater'
 require 'cucumber/nagios'
+require 'highline/import'
 
 module CucumberNagiosGenerators
 
   extend Templater::Manifold
 
   class ProjectGenerator < Templater::Generator
+    def initialize(destination_root, options = {}, *args)
+      super
+      @readme = []
+      @readme << "<%= color('Your new cucumber-nagios project has been generated!', :green) %>"
+      @readme << ""
+      @readme << "Next, install the necessary RubyGems with:"
+      @readme << ""
+      @readme << "    <%= color('bundle install', :yellow) %>"
+      @readme << ""
+    end
+
     def self.source_root
       File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'project')
     end
@@ -20,36 +32,57 @@ module CucumberNagiosGenerators
 
     @root = Pathname.new(File.dirname(__FILE__)).parent.join('lib/cucumber/nagios')
 
-    desc "Generate a new self-contained cucumber-nagios project."
+    desc "Generate a cucumber-nagios project."
     first_argument :name, :required => true, :desc => "Project name"
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
 
     directory :steps, @root.join('steps'), 'features/steps'
-    directory :features, @root.join('support'), 'features/support', :after => :readme
+    directory :features, @root.join('support'), 'features/support'
 
     glob!
 
-    def readme(action)
-      puts <<-README
+    def after_run
+      git_init
+      readme
+    end
 
-Your new cucumber-nagios project has been generated.
+    def git_init
+      if system("which git > /dev/null 2>&1")
+        Dir.chdir(destination_root) do
+          system("git init -q")
+          system("git add .")
+          system("git commit -qm 'Initial commit to #{name}.' .")
+        end
 
-To get going, you'll need to bundle gems into the project:
+        @readme << "Your project has been initialised as a git repository."
+        @readme << ""
+      else
+        @readme << "It's <%= color('strongly', :red) %> recommended you version control your project:"
+        @readme << ""
+        @readme << "    # Install git using your package manager."
+        @readme << "    <%= color('git init', :yellow) %>"
+        @readme << "    <%= color('git add .', :yellow) %>"
+        @readme << "    <%= color('git commit -m \"Initial commit to #{name}.\" .', :yellow) %>"
+        @readme << ""
+      end
+    end
 
-  $ bundle install
-
-It's *highly* recommended you version control your project
-
-  $ git init ; git add .
-
-      README
+    def readme
+      puts
+      @readme.each do |line|
+        if line =~ /^\s*$/
+          puts line
+        else
+          say(line)
+        end
+      end
+      puts unless @readme.last =~ /^\s*$/
     end
 
   end
 
-  desc "Generate a cucumber-nagios project."
   add :project, ProjectGenerator
 
 
@@ -60,8 +93,10 @@ It's *highly* recommended you version control your project
     end
 
     desc <<-DESC
-      Generate a cucumber feature. Takes a two arguments:
-        cucumber-nagios-gen feature <site-name> <feature-name>
+      Generate a Cucumber feature.
+      \n
+      Usage: cucumber-nagios-gen feature <site> <feature>
+        e.g. cucumber-nagios-gen feature google.com.au search
     DESC
 
     first_argument :site, :required => true, :desc => "Site name"
@@ -79,8 +114,9 @@ It's *highly* recommended you version control your project
 
   end
 
-  desc "Generators for a cucumber-nagios project"
   add :feature, FeatureGenerator
+
+  desc "Generators for a cucumber-nagios project"
 
 end
 

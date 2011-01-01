@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'rake'
+require 'lib/cucumber/nagios/version'
 
 begin
   require 'jeweler'
@@ -13,6 +14,7 @@ begin
     gem.homepage = "http://cucumber-nagios.org/"
     gem.authors = ["Lindsay Holmwood"]
     gem.has_rdoc = false
+    gem.version = Cucumber::Nagios::VERSION
 
     gem.add_dependency('cucumber', '>= 0.10.0')
     gem.add_dependency('rspec', '>= 2.3.0')

@@ -9,11 +9,12 @@ module Cucumber
         @passed  = []
         @warning = []
         @io = io
+        @message = []
         @start_time = Time.now
       end
 
       def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
-        record_result(status, :step_match => step_match)
+        record_result(status, :step_match => step_match, :keyword => keyword)
       end
 
       def before_examples(*args)
@@ -42,21 +43,27 @@ module Cucumber
         performance_data = [ "passed=#{@passed.size}", "failed=#{@failed.size}",
                              "nosteps=#{@warning.size}", "total=#{@total}",
                              "time=#{@run_time}" ]
-        message = "#{service_output.join(', ')} | #{performance_data.join('; ')}\n"
+        @message << "#{service_output.join(', ')} | #{performance_data.join('; ')}"
 
+        @failed.each do |keyword, step_match|
+          @message << "Failed: #{keyword}#{step_match.instance_variable_get("@name_to_match")} in #{step_match.file_colon_line}"
+        end
+
+        message = @message.join("\n") + "\n"
         @io.print(message)
         @io.flush
       end
 
       def record_result(status, opts={})
         step_match = opts[:step_match] || true
+        keyword    = opts[:keyword]
         case status
         when :passed
-          @passed << step_match
+          @passed  << [ keyword, step_match ]
         when :failed
-           @failed << step_match
+          @failed  << [ keyword, step_match ]
         when :undefined
-          @warning << step_match
+          @warning << [ keyword, step_match ]
         end
       end
 

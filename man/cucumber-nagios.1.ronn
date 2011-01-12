@@ -1,0 +1,49 @@
+cucumber-nagios
+===============
+
+## SYNOPSIS ##
+
+`cucumber-nagios` <feature> [--debug|--pretty]
+
+## DESCRIPTION ##
+
+**cucumber-nagios** runs Cucumber features and outputs the result in the Nagios
+plugin format.
+
+## FILES ##
+
+The `cucumber-nagios` command expects a path to a Cucumber feature file as the
+first argument. The path can be relative or absolute, e.g.
+
+  * `cucumber-nagios features/github.com/login.feature`
+  * `cucumber-nagios /home/nagios/behavioural/features/example.org/navigation.feature`
+
+## OPTIONS ##
+
+  * `--debug`:
+    Output the generated command line used to invoke Cucumber.
+  * `--pretty`:
+    Use Cucumber's `pretty` formatter instead of cucumber-nagios's Nagios
+    formatter. This is useful for debugging your scenarios as you write them.
+
+## RETURN VALUES ##
+
+  * **0**: all scenarios passed (OK)
+  * **1**: missing steps (WARNING)
+  * **2**: scenario failure (CRITICAL)
+  * **4**: missing feature file (UNKNOWN)
+
+## AUTHOR ##
+
+Lindsay Holmwood <lindsay@holmwood.id.au>
+
+## COPYRIGHT ##
+
+cucumber-nagios is MIT licensed.
+
+Portions of cucumber-nagios contain code originally contributed to Chef
+(http://github.com/opscode/chef)
+
+## SEE ALSO ##
+
+cucumber-nagios-gen(1), nagios(8)

@@ -35,6 +35,8 @@ Then /^"([^"]*)" in the "([^"]*)" project should not exist$/ do |file, project_n
 end
 
 Then /^the "([^"]*)" feature on "([^"]*)" should produce multiline output$/ do |feature, site|
-  `cd /tmp/#{@project_name} ; bin/cucumber-nagios features/#{site}/#{feature}.feature`
+  @output = `cd /tmp/#{@project_name} ; bin/cucumber-nagios features/#{site}/#{feature}.feature`
   $?.exitstatus.should == 0
+
+  @output.split("\n").size.should > 1
 end

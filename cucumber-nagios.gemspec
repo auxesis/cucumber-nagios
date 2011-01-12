@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cucumber-nagios}
-  s.version = "0.8.5"
+  s.version = "0.8.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lindsay Holmwood"]
-  s.date = %q{2011-01-01}
+  s.date = %q{2011-01-12}
   s.default_executable = %q{cucumber-nagios-gen}
   s.description = %q{cucumber-nagios helps you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios.}
   s.email = %q{lindsay@holmwood.id.au}
@@ -64,7 +64,8 @@ Gem::Specification.new do |s|
      "lib/generators/project/README",
      "lib/generators/project/bin/cucumber-nagios",
      "lib/generators/project/lib/generators/feature/%feature_name%.feature",
-     "lib/generators/project/lib/generators/feature/%feature_name%_steps.rb"
+     "lib/generators/project/lib/generators/feature/%feature_name%_steps.rb",
+     "man/cucumber-nagios.1.ronn"
   ]
   s.homepage = %q{http://cucumber-nagios.org/}
   s.rdoc_options = ["--charset=UTF-8"]

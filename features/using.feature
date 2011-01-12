@@ -31,3 +31,10 @@ Feature: Using features
     When I generate a new feature called "homepage" for "github.com"
     Then the "homepage" feature on "github.com" should exit cleanly
     Then "webrat.log" in the "passing-features" project should not exist
+
+  @using
+  Scenario: Multiline output
+    Given a project called "multiline-output" is created and frozen
+    When I generate a new feature called "homepage" for "github.com"
+    Then the "homepage" feature on "github.com" should exit cleanly
+    And the "homepage" feature on "github.com" should produce multiline output

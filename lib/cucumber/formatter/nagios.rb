@@ -32,6 +32,10 @@ module Cucumber
         print_summary
       end
 
+      def scenario_name(keyword, name, file_colon_line, source_indent)
+        @scenario_file_colon_line = file_colon_line
+      end
+
       private
       def print_summary
         @total    = @failed.size + @passed.size + @warning.size
@@ -45,8 +49,8 @@ module Cucumber
                              "time=#{@run_time}" ]
         @message << "#{service_output.join(', ')} | #{performance_data.join('; ')}"
 
-        @failed.each do |keyword, step_match|
-          @message << "Failed: #{keyword}#{step_match.instance_variable_get("@name_to_match")} in #{step_match.file_colon_line}"
+        @failed.each do |keyword, step_match, scenario_file_colon_line|
+          @message << "Failed: #{keyword}#{step_match.instance_variable_get("@name_to_match")} in #{scenario_file_colon_line} on #{step_match.file_colon_line}"
         end
 
         message = @message.join("\n") + "\n"
@@ -59,11 +63,11 @@ module Cucumber
         keyword    = opts[:keyword]
         case status
         when :passed
-          @passed  << [ keyword, step_match ]
+          @passed  << [ keyword, step_match, @scenario_file_colon_line ]
         when :failed
-          @failed  << [ keyword, step_match ]
+          @failed  << [ keyword, step_match, @scenario_file_colon_line ]
         when :undefined
-          @warning << [ keyword, step_match ]
+          @warning << [ keyword, step_match, @scenario_file_colon_line ]
         end
       end
 

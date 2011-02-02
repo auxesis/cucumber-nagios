@@ -12,7 +12,7 @@ When /^I install the latest gem$/ do
   glob = File.join(pkg_dir, '*.gem')
   latest = Dir.glob(glob).sort {|a, b| File.ctime(a) <=> File.ctime(b) }.last
 
-  silent_system("gem install #{latest} 2>&1 > /dev/null").should be_true
+  silent_system("gem install --local #{latest}").should be_true
 end
 
 Then /^I should have cucumber\-nagios\-gen on my path$/ do

@@ -27,24 +27,19 @@ module CucumberNagiosGenerators
     end
 
     def destination_root
-      if options[:directory]
-        options[:directory].to_s
-      else
-        # takes :name from first_argument
-        Pathname.new(@destination_root).join(name)
-      end
+      options[:directory] ? options[:directory].to_s : Pathname.new(@destination_root).join(name)
     end
 
     @root = Pathname.new(__FILE__).parent.parent.join('lib', 'cucumber', 'nagios').expand_path
 
     desc "Generate a cucumber-nagios project."
-    first_argument :name, :required => true, :desc => "Project name"
-    option :directory, :desc => "specify the directory to generate the project into"
+    first_argument :name,      :required => true, :desc => "Project name"
+    option         :directory, :desc => "specify the directory to generate the project into"
 
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
 
-    directory :steps,    @root.join('steps'), 'features/steps'
+    directory :steps,    @root.join('steps'),   'features/steps'
     directory :features, @root.join('support'), 'features/support'
 
     glob!
@@ -108,16 +103,16 @@ module CucumberNagiosGenerators
         e.g. cucumber-nagios-gen feature google.com.au search
     DESC
 
-    first_argument :site, :required => true, :desc => "Site name"
+    first_argument  :site,    :required => true, :desc => "Site name"
     second_argument :feature, :required => true, :desc => "Feature name"
 
     template :feature do |template|
-      template.source = "%feature_name%.feature"
+      template.source      = "%feature_name%.feature"
       template.destination = "features/#{site}/#{feature}.feature"
     end
 
     template :step do |template|
-      template.source = "%feature_name%_steps.rb"
+      template.source      = "%feature_name%_steps.rb"
       template.destination = "features/#{site}/steps/#{feature}_steps.rb"
     end
 

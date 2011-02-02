@@ -36,5 +36,6 @@ Feature: Using features
   Scenario: Multiline output
     Given a project called "multiline-output" is created and frozen
     When I generate a new feature called "homepage" for "github.com"
-    Then the "homepage" feature on "github.com" should exit cleanly
-    And the "homepage" feature on "github.com" should produce multiline output
+    And the "profile" feature on "github.com" checks for something preposterous
+    Then the "profile" feature on "github.com" should not exit cleanly
+    And the "profile" feature on "github" should produce multiline output

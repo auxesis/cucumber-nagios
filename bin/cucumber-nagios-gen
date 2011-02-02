@@ -4,6 +4,7 @@ require 'rubygems'
 require 'templater'
 require 'cucumber/nagios'
 require 'highline/import'
+require 'pathname'
 
 module CucumberNagiosGenerators
 
@@ -22,7 +23,7 @@ module CucumberNagiosGenerators
     end
 
     def self.source_root
-      File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'project')
+      Pathname.new(__FILE__).parent.parent.join('lib', 'generators', 'project').expand_path
     end
 
     def destination_root
@@ -30,11 +31,11 @@ module CucumberNagiosGenerators
         options[:directory].to_s
       else
         # takes :name from first_argument
-        File.join(@destination_root, name)
+        Pathname.new(@destination_root).join(name)
       end
     end
 
-    @root = Pathname.new(File.dirname(__FILE__)).parent.join('lib/cucumber/nagios')
+    @root = Pathname.new(__FILE__).parent.parent.join('lib', 'cucumber', 'nagios').expand_path
 
     desc "Generate a cucumber-nagios project."
     first_argument :name, :required => true, :desc => "Project name"
@@ -43,7 +44,7 @@ module CucumberNagiosGenerators
     file '.gitignore', '.gitignore'
     file '.bzrignore', '.bzrignore'
 
-    directory :steps, @root.join('steps'), 'features/steps'
+    directory :steps,    @root.join('steps'), 'features/steps'
     directory :features, @root.join('support'), 'features/support'
 
     glob!
@@ -56,8 +57,8 @@ module CucumberNagiosGenerators
     def git_init
       if system("which git > /dev/null 2>&1")
         Dir.chdir(destination_root) do
-          git_directory = File.join(destination_root, '.git')
-          if not File.directory?(git_directory)
+          git_directory = Pathname.new(destination_root).join('.git')
+          if not git_directory.directory?
             system("git init -q")
             system("git add .")
             system("git commit -qm 'Initial commit to #{name}.' .")
@@ -97,7 +98,7 @@ module CucumberNagiosGenerators
   # feature generator
   class FeatureGenerator < Templater::Generator
     def self.source_root
-      File.join(File.dirname(__FILE__), '..', 'lib', 'generators', 'project', 'lib', 'generators', 'feature')
+      Pathname.new(__FILE__).parent.parent.join('lib', 'generators', 'feature').expand_path
     end
 
     desc <<-DESC

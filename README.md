@@ -94,8 +94,8 @@ your tests will look something like this:
       To search for things
 
       Scenario: Searching for things
-        Given I visit "http://www.google.com"
-        When I fill in "q" with "wikipedia"
+        When I go to "http://www.google.com"
+        And I fill in "q" with "wikipedia"
         And I press "Google Search"
         Then I should see "www.wikipedia.org"
 

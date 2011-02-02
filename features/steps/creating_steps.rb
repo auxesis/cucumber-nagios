@@ -13,7 +13,7 @@ end
 
 When /^I freeze in dependencies$/ do
   @project_name.should_not be_nil
-  silent_system("cd /tmp/#{@project_name} ; bundle install").should be_true
+  silent_system("cd /tmp/#{@project_name} ; bundle install --local").should be_true
 end
 
 Then /^a Gemfile lock should be created$/ do

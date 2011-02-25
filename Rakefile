@@ -28,7 +28,7 @@ begin
     gem.add_development_dependency('rake', '>= 0.8.3')
 
     gem.bindir = "bin"
-    gem.executables = %w(cucumber-nagios-gen)
+    gem.executables = %w(cucumber-nagios-gen cucumber-nagios)
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

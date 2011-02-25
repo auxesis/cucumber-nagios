@@ -107,11 +107,11 @@ Running
 
 Invoke the Cucumber feature with the cucumber-nagios script:
 
-    bin/cucumber-nagios features/smh.com.au/smh.feature
+    cucumber-nagios features/smh.com.au/smh.feature
 
 cucumber-nagios can be run from anywhere:
 
-    /path/to/bin/cucumber-nagios /path/to/features/smh/smh.feature
+    cucumber-nagios /path/to/features/smh/smh.feature
 
 It should return a standard Nagios-formatted response string:
 

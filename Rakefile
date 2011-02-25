@@ -21,7 +21,7 @@ begin
     gem.add_dependency('webrat', '= 0.7.2')
     gem.add_dependency('mechanize', '= 1.0.0')
     gem.add_dependency('templater', '>= 1.0.0')
-    gem.add_dependency('net-ssh', '= 2.0.18')
+    gem.add_dependency('net-ssh', '~> 2.0.18')
     gem.add_dependency('amqp', '= 0.6.7')
     gem.add_dependency('bundler', '~> 1.0.7')
 

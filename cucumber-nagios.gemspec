@@ -86,7 +86,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<templater>, [">= 1.0.0"])
       s.add_runtime_dependency(%q<net-ssh>, ["= 2.0.18"])
       s.add_runtime_dependency(%q<amqp>, ["= 0.6.7"])
-      s.add_runtime_dependency(%q<bundler>, ["= 1.0.7"])
+      s.add_runtime_dependency(%q<bundler>, ["~> 1.0.7"])
       s.add_development_dependency(%q<rake>, [">= 0.8.3"])
     else
       s.add_dependency(%q<cucumber>, [">= 0.10.0"])
@@ -96,7 +96,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<templater>, [">= 1.0.0"])
       s.add_dependency(%q<net-ssh>, ["= 2.0.18"])
       s.add_dependency(%q<amqp>, ["= 0.6.7"])
-      s.add_dependency(%q<bundler>, ["= 1.0.7"])
+      s.add_dependency(%q<bundler>, ["~> 1.0.7"])
       s.add_dependency(%q<rake>, [">= 0.8.3"])
     end
   else
@@ -107,7 +107,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<templater>, [">= 1.0.0"])
     s.add_dependency(%q<net-ssh>, ["= 2.0.18"])
     s.add_dependency(%q<amqp>, ["= 0.6.7"])
-    s.add_dependency(%q<bundler>, ["= 1.0.7"])
+    s.add_dependency(%q<bundler>, ["~> 1.0.7"])
     s.add_dependency(%q<rake>, [">= 0.8.3"])
   end
 end

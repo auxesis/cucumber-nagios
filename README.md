@@ -282,6 +282,12 @@ If you're feeling ambitious, creating a feature branch that solves your issue is
 
     $ git clone https://github.com/ken/cucumber-nagios.git
 
+Setup your environment and make sure the tests pass:
+
+    $ cd cucumber-nagios
+    $ bundle install
+    $ rake
+
 Start a branch, commit your changes, and push to github:
 
     $ git checkout -b my_feature_branch

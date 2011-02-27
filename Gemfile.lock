@@ -1,0 +1,71 @@
+PATH
+  remote: .
+  specs:
+    cucumber-nagios (0.8.10)
+      amqp (= 0.6.7)
+      bundler (~> 1.0.7)
+      cucumber (>= 0.10.0)
+      cucumber-nagios
+      mechanize (= 1.0.0)
+      net-ssh (~> 2.1.0)
+      rspec (>= 2.3.0)
+      templater (>= 1.0.0)
+      webrat (= 0.7.2)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    amqp (0.6.7)
+      eventmachine (>= 0.12.4)
+    builder (3.0.0)
+    cucumber (0.10.0)
+      builder (>= 2.1.2)
+      diff-lcs (~> 1.1.2)
+      gherkin (~> 2.3.2)
+      json (~> 1.4.6)
+      term-ansicolor (~> 1.0.5)
+    diff-lcs (1.1.2)
+    eventmachine (0.12.10)
+    extlib (0.9.15)
+    gherkin (2.3.3)
+      json (~> 1.4.6)
+    git (1.2.5)
+    highline (1.6.1)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
+    json (1.4.6)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
+    net-ssh (2.1.0)
+    nokogiri (1.4.4)
+    rack (1.2.1)
+    rack-test (0.5.7)
+      rack (>= 1.0)
+    rake (0.8.7)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    templater (1.0.0)
+      diff-lcs (>= 1.1.2)
+      extlib (>= 0.9.5)
+      highline (>= 1.4.0)
+    term-ansicolor (1.0.5)
+    webrat (0.7.2)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cucumber-nagios!
+  jeweler
+  rake (>= 0.8.3)

@@ -26,6 +26,7 @@ begin
     gem.add_dependency('bundler', '~> 1.0.7')
 
     gem.add_development_dependency('rake', '>= 0.8.3')
+    gem.add_development_dependency('jeweler')
 
     gem.bindir = "bin"
     gem.executables = %w(cucumber-nagios-gen)

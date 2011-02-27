@@ -3,7 +3,7 @@ When /^I build the gem$/ do
   rakefile     = project_root.join('Rakefile')
   File.exist?(rakefile).should be_true
 
-  system("rake -f #{rakefile} build").should be_true
+  silent_system("rake -f #{rakefile} build").should be_true
 end
 
 When /^I install the latest gem$/ do

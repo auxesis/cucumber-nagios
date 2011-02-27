@@ -21,3 +21,6 @@ pkg
 ## PROJECT::SPECIFIC
 man/*
 !man/*.ronn
+
+## BUNDLER
+.bundle

@@ -271,3 +271,22 @@ features live in $gemroot/features/, and can be run with:
     $ cucumber features/creating.feature
     $ cucumber features/using.feature
 
+Contributing
+============
+
+Found something wrong? Got a great idea? You too can make cucumber-nagios better by submitting a issue or patch.
+
+First, head over to our [issue tracking](https://github.com/auxesis/cucumber-nagios/issues) and see if other people want the same thing. If you don't see anything similar, create an issue to let us know what's on your mind. As you might expect, we use cucumber to write tests, so if you can describe your idea in givens, whens and thens, that'll make fixing it even easier.
+
+If you're feeling ambitious, creating a feature branch that solves your issue is even better. Fork the [project](https://github.com/auxesis/cucumber-nagios), and check out your fork (assuming a github username of ken):
+
+    $ git clone https://github.com/ken/cucumber-nagios.git
+
+Start a branch, commit your changes, and push to github:
+
+    $ git checkout -b my_feature_branch
+    [ edit files ]
+    $ git checkin -m "added new awesome features. fixes github issue #1234"
+    $ git push origin my_feature_branch
+
+Then send us a pull request from your fork's page at github.

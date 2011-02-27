@@ -29,12 +29,7 @@ GEM
     extlib (0.9.15)
     gherkin (2.3.3)
       json (~> 1.4.6)
-    git (1.2.5)
     highline (1.6.1)
-    jeweler (1.5.2)
-      bundler (~> 1.0.0)
-      git (>= 1.2.5)
-      rake
     json (1.4.6)
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
@@ -67,5 +62,4 @@ PLATFORMS
 
 DEPENDENCIES
   cucumber-nagios!
-  jeweler
   rake (>= 0.8.3)

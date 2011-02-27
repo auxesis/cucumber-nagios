@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 
-require 'bundler'
-
-Bundler::GemHelper.install_tasks
+begin
+  require 'bundler'
+  Bundler::GemHelper.install_tasks
+rescue LoadError
+  puts "Bundler not available. Install it with: gem install bundler"
+end
 
 begin
   require 'cucumber/rake/task'

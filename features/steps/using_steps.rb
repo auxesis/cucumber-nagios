@@ -15,11 +15,11 @@ Then /^a feature file should exist for "([^\"]*)" on "([^\"]*)"$/ do |feature, s
 end
 
 Then /^the "([^\"]*)" feature on "([^\"]*)" should exit cleanly$/ do |feature, site|
-  silent_system("cd /tmp/#{@project_name} ; bin/cucumber-nagios features/#{site}/#{feature}.feature").should be_true
+  silent_system("cd /tmp/#{@project_name} ; cucumber-nagios features/#{site}/#{feature}.feature").should be_true
 end
 
 Then /^the "([^\"]*)" feature on "([^\"]*)" should not exit cleanly$/ do |feature, site|
-  silent_system("cd /tmp/#{@project_name} ; bin/cucumber-nagios features/#{site}/#{feature}.feature").should be_false
+  silent_system("cd /tmp/#{@project_name} ; cucumber-nagios features/#{site}/#{feature}.feature").should be_false
 end
 
 When /^the "([^\"]*)" feature on "([^\"]*)" checks for something preposterous$/ do |feature, site|
@@ -35,7 +35,7 @@ Then /^"([^"]*)" in the "([^"]*)" project should not exist$/ do |file, project_n
 end
 
 Then /^the "([^"]*)" feature on "([^"]*)" should produce multiline output$/ do |feature, site|
-  command = "cd /tmp/#{@project_name} ; bin/cucumber-nagios features/#{site}/#{feature}.feature"
+  command = "cd /tmp/#{@project_name} ; cucumber-nagios features/#{site}/#{feature}.feature"
   @output = `#{command}`
   @output.split("\n").size.should > 1
 end

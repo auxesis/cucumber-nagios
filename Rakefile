@@ -43,3 +43,4 @@ task :check_manifest => [:clean, 'MANIFEST', 'MANIFEST.tmp'] do
 end
 
 CLEAN << '*.gem'
+CLEAN << '.rake_tasks'

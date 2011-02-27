@@ -1,7 +1,8 @@
 Given /^cucumber\-nagios is installed$/ do
   When 'I build the gem'
   And 'I install the latest gem'
-  Then 'I should have cucumber-nagios-gen on my path'
+  Then 'I should have "cucumber-nagios-gen" on my path'
+  And 'I should have "cucumber-nagios" on my path'
 end
 
 When /^I create a new project called "([^\"]*)"$/ do |project_name|

@@ -3,7 +3,7 @@ When /^I build the gem$/ do
   rakefile     = project_root.join('Rakefile')
   File.exist?(rakefile).should be_true
 
-  silent_system("rake -f #{rakefile} build").should be_true
+  system("rake -f #{rakefile} build").should be_true
 end
 
 When /^I install the latest gem$/ do
@@ -15,8 +15,8 @@ When /^I install the latest gem$/ do
   silent_system("gem install --local #{latest}").should be_true
 end
 
-Then /^I should have cucumber\-nagios\-gen on my path$/ do
-  silent_system("which cucumber-nagios-gen").should be_true
+Then /^I should have "([^"]*)" on my path$/ do |file|
+  silent_system("which #{file}").should be_true
 end
 
 Then /^I can generate a new project$/ do

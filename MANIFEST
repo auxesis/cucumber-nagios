@@ -1,9 +1,15 @@
+.gitignore
+.rvmrc
 AUTHORS
+Gemfile
+Gemfile.lock
 HACKING
 LICENSE
+MANIFEST
 README.md
 Rakefile
 TODO
+bin/cucumber-nagios
 bin/cucumber-nagios-gen
 cucumber-nagios.gemspec
 features/commands.feature

@@ -3,12 +3,11 @@
 require 'pathname'
 
 unless ARGV[0]
-  puts "Usage: #{__FILE__} <feature> [--debug|--pretty]"
+  puts "Usage: #{File.basename(__FILE__)} <feature> [--debug|--pretty]"
   exit 4
 end
 
-root          = Pathname.new(File.dirname(__FILE__)).expand_path
-feature_dir   = root.join('..', 'features').expand_path
+feature_dir   = Pathname.new('features').expand_path
 feature, line = ARGV[0].split(':')
 
 unless File.exist?(feature)
@@ -18,7 +17,7 @@ end
 
 parts = []
 parts << "cucumber"
-parts << "--require #{feature_dir}"
+parts << "--require #{feature_dir}" if feature_dir.exist?
 parts << "--format pretty" if ARGV.include?("--pretty")
 parts << "--format Cucumber::Formatter::Nagios" unless ARGV.include?("--pretty")
 parts << "#{line ? "#{feature}:#{line}" : feature }"

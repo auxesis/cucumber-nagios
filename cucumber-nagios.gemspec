@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   s.files = File.read("MANIFEST").split(/\r?\n\r?/)
   s.executables = s.files.grep(/^bin/) { |f| File.basename(f) }
 
-  s.add_runtime_dependency "cucumber-nagios", ">= 0"
   s.add_runtime_dependency "cucumber", ">= 0.10.0"
   s.add_runtime_dependency "rspec", ">= 2.3.0"
   s.add_runtime_dependency "webrat", "= 0.7.2"

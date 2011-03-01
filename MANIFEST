@@ -47,5 +47,4 @@ lib/generators/project/.bzrignore
 lib/generators/project/.gitignore
 lib/generators/project/Gemfile
 lib/generators/project/README
-lib/generators/project/bin/cucumber-nagios
 man/cucumber-nagios.1.ronn

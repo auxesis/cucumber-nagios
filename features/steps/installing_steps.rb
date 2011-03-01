@@ -15,8 +15,8 @@ When /^I install the latest gem$/ do
   silent_system("gem install --local #{latest}").should be_true
 end
 
-Then /^I should have cucumber\-nagios\-gen on my path$/ do
-  silent_system("which cucumber-nagios-gen").should be_true
+Then /^I should have "([^"]*)" on my path$/ do |file|
+  silent_system("which #{file}").should be_true
 end
 
 Then /^I can generate a new project$/ do

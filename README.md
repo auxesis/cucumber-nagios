@@ -271,3 +271,7 @@ features live in $gemroot/features/, and can be run with:
     $ cucumber features/creating.feature
     $ cucumber features/using.feature
 
+Contributing
+============
+
+See the HACKING file.

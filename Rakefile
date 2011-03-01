@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
 require 'rake'
-require 'lib/cucumber/nagios/version'
+require './lib/cucumber/nagios/version'
 
 begin
   require 'jeweler'

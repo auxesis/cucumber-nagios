@@ -10,3 +10,9 @@ Feature: Creating new project
     And I freeze in dependencies
     Then a Gemfile lock should be created
 
+  @create
+  Scenario: Pretend to create a project
+    Given cucumber-nagios is installed
+    When I pretend to create a new project called "greatest-website-tests"
+    Then I do not freeze in dependencies
+    And a Gemfile lock should not be created

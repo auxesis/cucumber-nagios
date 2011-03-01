@@ -50,7 +50,7 @@ module CucumberNagiosGenerators
     end
 
     def git_init
-      if system("which git > /dev/null 2>&1")
+      if system("which git > /dev/null 2>&1") && Dir.exists?(destination_root)
         Dir.chdir(destination_root) do
           git_directory = Pathname.new(destination_root).join('.git')
           if not git_directory.directory?

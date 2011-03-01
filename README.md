@@ -51,6 +51,34 @@ This will spit out a bunch of files in the directory specified as `<project-name
 Check the `README` within this directory for specific instructions for managing
 the project.
 
+Setting up Password-less SSH
+============================
+To use Aruba's step definitions with SSH sessions we use passwordl-less
+authetication.
+
+Once you have installed the Cucumber-Nagios gem it should 'just-work'.
+Of course you server needs to accept these connections.
+To test your localhost password-less access (bash):
+
+    ssh-forever `whoami`@`hostname` -p 22 -i ~/.ssh/test_id_rsa.pub -n testing -b
+    ssh cuken "echo 'Hello there from here: `hostname`'"
+
+If you want an interactive login after you set up a new SSH user/key/host:
+
+    ssh-forever `whoami`@`hostname` -p 22 -i ~/.ssh/test_id_rsa.pub -n testing2 -a -q
+
+Finally if you need to enter you password to create a key, try this:
+
+    ssh-forever `whoami`@`hostname` -p 22 -i ~/.ssh/test_id_rsa.pub -n testing3
+
+
+Once you have your SSH server accepting secure, but password-less,
+connections you can remove the test keys from `~/.ssh/`, and you can
+remove the Host entry in `~/.ssh/config`.
+
+You are now good to use SSH-forever - which of course is the gem we use :)
+
+For a full example see [ssh-forever](https://github.com/mattwynne/ssh-forever).
 
 Bundling dependencies
 =====================

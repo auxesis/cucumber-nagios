@@ -1,3 +1,10 @@
+#
+# Some WWW access features/steps can take a while:
+#
+Before do
+  @aruba_timeout_seconds.nil? || @aruba_timeout_seconds < 30 ? @aruba_timeout_seconds = 10 : @aruba_timeout_seconds
+end
+
 When /I fetch headers from "(.*)"/ do |url|
   visit(url)
   @headers = response.header

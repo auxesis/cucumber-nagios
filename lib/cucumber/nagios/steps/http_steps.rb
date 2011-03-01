@@ -1,4 +1,11 @@
 # Setup
+#
+# Some WWW access features/steps can take a while:
+#
+Before do
+  @aruba_timeout_seconds.nil? || @aruba_timeout_seconds < 30 ? @aruba_timeout_seconds = 10 : @aruba_timeout_seconds
+end
+
 Given /^I am HTTP digest authenticated with the following credentials:$/ do |table|
   attrs    = table.hashes.first
   username = attrs["username"]

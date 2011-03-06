@@ -14,7 +14,7 @@ end
 
 When /^I pretend to create a new project called "([^\"]*)"$/ do |project_name|
   @project_name = project_name
-  FileUtils.rm_rf("/tmp/#{@project_name}") if  Dir.exists?("/tmp/#{@project_name}")
+  FileUtils.rm_rf("/tmp/#{@project_name}") if File.directory?("/tmp/#{@project_name}")
 
   silent_system("cd /tmp ; cucumber-nagios-gen project --pretend #{@project_name}").should be_true
 end

@@ -5,15 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cucumber-nagios}
-  s.version = "0.8.10"
+  s.version = "0.8.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lindsay Holmwood"]
-  s.date = %q{2011-02-03}
-  s.default_executable = %q{cucumber-nagios-gen}
+  s.date = %q{2011-03-06}
   s.description = %q{cucumber-nagios helps you write high-level behavioural tests for your web applications and Unix infrastructure that can be plugged into Nagios.}
   s.email = %q{lindsay@holmwood.id.au}
-  s.executables = ["cucumber-nagios-gen"]
+  s.executables = ["cucumber-nagios-gen", "cucumber-nagios"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.md",
@@ -27,6 +26,7 @@ Gem::Specification.new do |s|
      "README.md",
      "Rakefile",
      "TODO",
+     "bin/cucumber-nagios",
      "bin/cucumber-nagios-gen",
      "cucumber-nagios.gemspec",
      "features/commands.feature",
@@ -64,7 +64,6 @@ Gem::Specification.new do |s|
      "lib/generators/project/.gitignore",
      "lib/generators/project/Gemfile",
      "lib/generators/project/README",
-     "lib/generators/project/bin/cucumber-nagios",
      "man/cucumber-nagios.1.ronn"
   ]
   s.has_rdoc = false

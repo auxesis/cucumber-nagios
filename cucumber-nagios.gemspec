@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["AUTHORS", "LICENSE", "README.md", "TODO"]
   s.default_executable = "cucumber-nagios-gen"
   s.require_paths = ["lib"]
-  s.files = File.read("MANIFEST").split(/\r?\n\r?/)
+  s.files = `git ls-files`.split(/\r?\n\r?/)
   s.executables = s.files.grep(/^bin/) { |f| File.basename(f) }
 
   s.add_runtime_dependency "cucumber", ">= 0.10.0"

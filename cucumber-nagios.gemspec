@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files              = `git ls-files`.split(/\r?\n\r?/)
   s.executables        = s.files.grep(/^bin/) { |f| File.basename(f) }
   s.default_executable = "cucumber-nagios"
-  s.extra_rdoc_files   = files.grep(/^[A-Z]+(\.md)*$/)
+  s.extra_rdoc_files   = s.files.grep(/^[A-Z]+(\.md)*$/)
 
   s.add_runtime_dependency     "cucumber", ">= 0.10.0"
   s.add_runtime_dependency     "rspec", ">= 2.3.0"

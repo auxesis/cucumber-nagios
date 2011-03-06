@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cucumber-nagios (0.8.11)
+    cucumber-nagios (0.9.0)
       amqp (= 0.6.7)
       bundler (~> 1.0.7)
       cucumber (>= 0.10.0)

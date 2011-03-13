@@ -51,6 +51,13 @@ This will spit out a bunch of files in the directory specified as `<project-name
 Check the `README` within this directory for specific instructions for managing
 the project.
 
+Setting up Password-less SSH
+============================
+
+    gem install ssh-forever
+    ssh-forever username@yourserver.com [-p port] [-i identity_file] [-n name_for_future_use]
+
+    For a full example see [ssh-forever](https://github.com/mattwynne/ssh-forever).
 
 Bundling dependencies
 =====================

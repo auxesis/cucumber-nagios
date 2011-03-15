@@ -7,7 +7,9 @@ Given /^a project called "([^\"]*)" is created and frozen$/ do |project_name|
 end
 
 When /^I generate a new feature called "([^\"]*)" for "([^\"]*)"$/ do |feature, site|
-  silent_system("cd /tmp/#{@project_name} ; cucumber-nagios-gen feature #{site} #{feature}")
+  Dir.chdir("/tmp/#{@project_name}") do
+    silent_system("cucumber-nagios-gen feature #{site} #{feature}")
+  end
 end
 
 Then /^a feature file should exist for "([^\"]*)" on "([^\"]*)"$/ do |feature, site|
@@ -15,11 +17,15 @@ Then /^a feature file should exist for "([^\"]*)" on "([^\"]*)"$/ do |feature, s
 end
 
 Then /^the "([^\"]*)" feature on "([^\"]*)" should exit cleanly$/ do |feature, site|
-  silent_system("cd /tmp/#{@project_name} ; cucumber-nagios features/#{site}/#{feature}.feature").should be_true
+  Dir.chdir("/tmp/#{@project_name}") do
+    silent_system("cucumber-nagios features/#{site}/#{feature}.feature").should be_true
+  end
 end
 
 Then /^the "([^\"]*)" feature on "([^\"]*)" should not exit cleanly$/ do |feature, site|
-  silent_system("cd /tmp/#{@project_name} ; cucumber-nagios features/#{site}/#{feature}.feature").should be_false
+  Dir.chdir("/tmp/#{@project_name}") do
+    silent_system("cucumber-nagios features/#{site}/#{feature}.feature").should be_false
+  end
 end
 
 When /^the "([^\"]*)" feature on "([^\"]*)" checks for something preposterous$/ do |feature, site|
@@ -35,7 +41,9 @@ Then /^"([^"]*)" in the "([^"]*)" project should not exist$/ do |file, project_n
 end
 
 Then /^the "([^"]*)" feature on "([^"]*)" should produce multiline output$/ do |feature, site|
-  command = "cd /tmp/#{@project_name} ; cucumber-nagios features/#{site}/#{feature}.feature"
-  @output = `#{command}`
-  @output.split("\n").size.should > 1
+  Dir.chdir("/tmp/#{@project_name}") do
+    command = "cucumber-nagios features/#{site}/#{feature}.feature"
+    @output = `#{command}`
+    @output.split("\n").size.should > 1
+  end
 end

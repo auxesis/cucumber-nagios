@@ -9,7 +9,7 @@ end
 
 begin
   require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features)
+  #Cucumber::Rake::Task.new(:features)
 rescue LoadError
   task :features do
     abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
@@ -17,6 +17,14 @@ rescue LoadError
 end
 
 task :default => :features
+
+desc "Run Cucumber features"
+task :features do
+  puts "The bundled Cucumber Rake task is broken with Bundler."
+  puts "Invoking Cucumber manually."
+  puts
+  system("cucumber")
+end
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
@@ -43,4 +51,3 @@ task :check_manifest => [:clean, 'MANIFEST', 'MANIFEST.tmp'] do
 end
 
 CLEAN << '*.gem'
-CLEAN << '.rake_tasks'

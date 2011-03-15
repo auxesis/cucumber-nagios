@@ -23,7 +23,9 @@ Then /^I can generate a new project$/ do
   testproj = "testproj-#{Time.now.to_i}"
   FileUtils.rm_rf("/tmp/#{testproj}")
 
-  silent_system("cd /tmp ; cucumber-nagios-gen project #{testproj}").should be_true
+  Dir.chdir("/tmp") do
+    silent_system("cucumber-nagios-gen project #{testproj}").should be_true
+  end
   File.exists?("/tmp/#{testproj}").should be_true
 end
 

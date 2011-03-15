@@ -1,30 +1,36 @@
+# For complete Aruba step listing see:
+# lib/aruba/cucumber.rb
+# or https://github.com/aslakhellesoy/aruba/blob/master/lib/aruba/cucumber.rb
 Feature: Executing commands
-  In order to test a running system
+  In order to test a running local system
   As an administrator
-  I want to run arbitrary commands and test the output
+  I want to use Aruba steps to run commands and test output
 
-  @steps
+  Background:
+    Given that "cuken/cmd" is required
+
   Scenario: Check Stdout
-    When I run 'echo "i like cheese"'
-    Then 'stdout' should have 'i like cheese'
+    When I do aruba I run "echo 'i like cheese'"
+    Then I see aruba the stdout from "echo 'i like cheese'" should contain "i like cheese"
 
-  @steps
   Scenario: Check Stderr
-    When I run 'echo "i like cheese" 1>&2'
-    Then 'stderr' should have 'i like cheese'
+    When I do aruba I run "echo 'i like cheese' 1>&2"
+    Then I see aruba the stderr from "echo 'i like cheese' 1>&2" should contain "i like cheese"
 
-  @steps
   Scenario: Check Stdout for multiple lines
-    When I run 'shopt -s xpg_echo ; echo "one\n\one\none\n"'
-    Then 'one' should appear on 'stdout' '3' times
+    When I run "echo 'one\none\none\n'"
+    Then the output should contain:
+    """
+    one
+    one
+    one
+    """
 
-  @steps
   Scenario: Check exit code
-    When I run 'true'
-    Then it should exit '0'
+    When I run "true"
+    Then the exit status should be 0
 
-  @steps
   Scenario: Check exit code
-    When I run 'false'
-    Then it should exit '1'
+    When I run "false"
+    Then the exit status should be 1
 

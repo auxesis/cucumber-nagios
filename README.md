@@ -51,6 +51,7 @@ This will spit out a bunch of files in the directory specified as `<project-name
 Check the `README` within this directory for specific instructions for managing
 the project.
 
+<<<<<<< HEAD
 Setting up Password-less SSH
 ============================
 
@@ -58,6 +59,26 @@ Setting up Password-less SSH
     ssh-forever username@yourserver.com [-p port] [-i identity_file] [-n name_for_future_use]
 
     For a full example see [ssh-forever](https://github.com/mattwynne/ssh-forever).
+||||||| parent of dde230d... Merged aruba_ssh branch
+=======
+Setting up Password-less SSH
+============================
+To use Aruba's step definitions with remote SSH sessions:
+
+    gem install ssh-forever
+
+To test localhost password-less access (bash):
+    you=`whoami`
+    where=`hostname`
+    ssh-forever $you@$where -p 22 -i ~/.ssh/test_id_rsa.pub -n testing
+
+Once you have your local host accepting secure, but password-less,
+connections you can remove the test keys from `~/.ssh/`, and you can
+remove the Host entry in `~/.ssh/config`.
+
+For a full example see [ssh-forever](https://github.com/mattwynne/ssh-forever).
+
+>>>>>>> dde230d... Merged aruba_ssh branch
 
 Bundling dependencies
 =====================

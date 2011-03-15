@@ -24,3 +24,6 @@ man/*
 
 ## BUNDLER
 .bundle
+
+## RVM
+.rvmrc

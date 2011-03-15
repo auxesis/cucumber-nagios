@@ -9,3 +9,5 @@ require 'webrat_logging_patches'
 World do
   Webrat::Session.new(Webrat::MechanizeAdapter.new)
 end
+
+require 'cuken/ssh'

@@ -61,7 +61,7 @@ Of course you server needs to accept these connections.
 To test your localhost password-less access (bash):
 
     ssh-forever `whoami`@`hostname` -p 22 -i ~/.ssh/test_id_rsa.pub -n testing -b
-    ssh cuken "echo 'Hello there from here: `hostname`'"
+    ssh testing "echo 'Hello there from here: `hostname`'"
 
 If you want an interactive login after you set up a new SSH user/key/host:
 

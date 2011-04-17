@@ -1,14 +1,7 @@
-Given /^cucumber\-nagios is installed$/ do
-  When 'I build the gem'
-  And 'I install the latest gem'
-  Then 'I should have "cucumber-nagios-gen" on my path'
-  And 'I should have "cucumber-nagios" on my path'
-end
-
 When /^I create a new project called "([^\"]*)"$/ do |project_name|
   @project_name = project_name
   FileUtils.rm_rf("/tmp/#{@project_name}")
-
+  
   Dir.chdir("/tmp") do
     silent_system("cucumber-nagios-gen project #{@project_name}").should be_true
   end
@@ -17,7 +10,7 @@ end
 When /^I pretend to create a new project called "([^\"]*)"$/ do |project_name|
   @project_name = project_name
   FileUtils.rm_rf("/tmp/#{@project_name}") if File.directory?("/tmp/#{@project_name}")
-
+  
   Dir.chdir("/tmp") do
     silent_system("cucumber-nagios-gen project --pretend #{@project_name}").should be_true
   end

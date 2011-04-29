@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.description = "cucumber-nagios helps you write behavioural tests for your systems and infrastructure, that can be plugged into Nagios."
   s.homepage    = "http://cucumber-nagios.org/"
 
-  s.authors     = ["Lindsay Holmwood"]
-  s.email       = ["lindsay@holmwood.id.au"]
+  s.authors     = ["Lindsay Holmwood", "hedgehog"]
+  s.email       = ["lindsay@holmwood.id.au", "hedgehogshiatus@gmail.com"]
 
   s.require_paths      = ["lib"]
   s.files              = `git ls-files`.split(/\r?\n\r?/)

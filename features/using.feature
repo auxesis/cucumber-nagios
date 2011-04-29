@@ -7,7 +7,6 @@ Feature: Using features
 
   @using
   Scenario: Create a feature
-    Given cucumber-nagios is installed
     And a project called "more-great-tests" is created and frozen
     When I generate a new feature called "login" for "github.com"
     Then a feature file should exist for "login" on "github.com"

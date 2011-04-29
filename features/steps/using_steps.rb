@@ -1,6 +1,5 @@
 Given /^a project called "([^\"]*)" is created and frozen$/ do |project_name|
   @project_name = project_name
-  Given 'cucumber-nagios is installed'
   When "I create a new project called \"#{@project_name}\""
   And 'I freeze in dependencies'
   Then 'a Gemfile lock should be created'

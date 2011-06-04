@@ -21,7 +21,7 @@ Quickstart
  4. `cd bunch-o-tests`
  5. `bundle install`
  6. `cucumber-nagios-gen feature ebay.com.au bidding`
- 7. `bin/cucumber-nagios features/ebay.com.au/bidding.feature`
+ 7. `cucumber-nagios features/ebay.com.au/bidding.feature`
 
 Installing
 ==========
@@ -30,8 +30,9 @@ Install the gem with:
 
     gem install cucumber-nagios
 
-This will add the `cucumber-nagios-gen` command to your path, and make the
-shipped cucumber-nagios steps available to other projects using Cucumber.
+This will add the `cucumber-nagios-gen` and `cucumber-nagios` commands to your
+path, and make the shipped cucumber-nagios steps available to other projects
+using Cucumber.
 
 *Windows users* - you need to download and install the
 [Ruby Installer](http://rubyinstaller.org/downloads/) and the
@@ -165,7 +166,7 @@ Running
 
 Invoke the Cucumber feature with the `cucumber-nagios` script:
 
-    bin/cucumber-nagios features/smh.com.au/smh.feature
+    cucumber-nagios features/smh.com.au/smh.feature
 
 `cucumber-nagios` can be run from anywhere:
 

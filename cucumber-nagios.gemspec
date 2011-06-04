@@ -31,4 +31,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency     "amqp", "= 0.6.7"
   s.add_runtime_dependency     "bundler", "~> 1.0.10"
   s.add_development_dependency "rake", ">= 0.8.3"
+  s.add_development_dependency "aruba", ">= 0.3.6"
 end

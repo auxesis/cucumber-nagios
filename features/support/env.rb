@@ -13,6 +13,7 @@ $: << File.expand_path(File.dirname(__FILE__))
 
 require 'cucumber/nagios/steps'
 require 'webrat_logging_patches'
+require 'aruba/cucumber'
 
 World do
   Webrat::Session.new(Webrat::MechanizeAdapter.new)

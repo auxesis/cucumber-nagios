@@ -4,7 +4,7 @@ end
 
 Then /^I can ssh to "([^\"]*)" with the following credentials:$/ do |host, table|
   @auth_methods ||= %w(publickey password)
-  
+
   credentials = table.hashes
   credentials.each do |creds|
     lambda {
@@ -19,19 +19,19 @@ Then /^I can ssh to the following hosts with these credentials:$/ do |table|
   session_details = table.hashes
 
   session_details.each do |session|
-    # initialize a list of keys and auth methods for just this session, as 
+    # initialize a list of keys and auth methods for just this session, as
     # session can have session-specific keys mixed with global keys
     session_keys = Array.new(@keys)
-    session_auth_methods = Array.new(@auth_methods) 
+    session_auth_methods = Array.new(@auth_methods)
 
-    # you can pass in a keyfile in the session details, so we need to 
+    # you can pass in a keyfile in the session details, so we need to
     if session["keyfile"]
       session_keys << session["keyfile"]
       session_auth_methods << "publickey"
     end
-    
+
     lambda {
-	    Net::SSH.start(session["hostname"], session["username"], :password => session["password"], 
+      Net::SSH.start(session["hostname"], session["username"], :password => session["password"],
                                                                :auth_methods => session_auth_methods,
                                                                :keys => session_keys)
     }.should_not raise_error
@@ -56,14 +56,14 @@ When /^I ssh to "([^\"]*)" with the following credentials:$/ do |hostname, table
   @auth_methods ||= %w(password)
   session = table.hashes.first
   session_keys = Array.new(@keys)
-  session_auth_methods = Array.new(@auth_methods) 
+  session_auth_methods = Array.new(@auth_methods)
   if session["keyfile"]
     session_keys << session["keyfile"]
     session_auth_methods << "publickey"
   end
 
   lambda {
-    @connection = Net::SSH.start(hostname, session["username"], :password => session["password"], 
+    @connection = Net::SSH.start(hostname, session["username"], :password => session["password"],
                                                                 :auth_methods => session_auth_methods,
                                                                 :keys => session_keys)
   }.should_not raise_error

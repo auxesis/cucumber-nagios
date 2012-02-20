@@ -40,7 +40,7 @@ module Cucumber
       def print_summary
         @total    = @failed.size + @passed.size + @warning.size
         @status   = @failed.size > 0 && "CRITICAL" || @warning.size > 0 && "WARNING" || "OK"
-        @run_time = (Time.now - @start_time).to_i
+        @run_time = (Time.now - @start_time).round(2)
 
         service_output   = [ "CUCUMBER #{@status} - Critical: #{@failed.size}",
                              "Warning: #{@warning.size}", "#{@passed.size} okay" ]

@@ -16,20 +16,17 @@ Gem::Specification.new do |s|
   s.require_paths      = ["lib"]
   s.files              = `git ls-files`.split(/\r?\n\r?/)
   s.executables        = s.files.grep(/^bin/) { |f| File.basename(f) }
-  s.default_executable = "cucumber-nagios"
   s.extra_rdoc_files   = s.files.grep(/^[A-Z]+(\.md)*$/)
 
-  s.add_runtime_dependency     "cucumber", ">= 0.10.0"
+  s.add_runtime_dependency     "cucumber", ">= 1.0.1"
   s.add_runtime_dependency     "rspec", ">= 2.5.0"
-  s.add_runtime_dependency     "aruba", ">= 0.3.3"
+  s.add_runtime_dependency     "aruba", ">= 0.3.4"
   s.add_runtime_dependency     "cuken", ">= 0.1.1"
-  s.add_runtime_dependency     "ssh-forever", ">= 0.4.0"
-  s.add_runtime_dependency     "webrat", "= 0.7.2"
-  s.add_runtime_dependency     "mechanize", "= 1.0.0"
+  s.add_runtime_dependency     "webrat", ">= 0.7.2"
+  s.add_runtime_dependency     "mechanize", ">= 1.0.0"
   s.add_runtime_dependency     "templater", ">= 1.0.0"
-  s.add_runtime_dependency     "net-ssh", "~> 2.1.0"
-  s.add_runtime_dependency     "amqp", "= 0.6.7"
-  s.add_runtime_dependency     "bundler", "~> 1.0.10"
+  s.add_runtime_dependency     "net-ssh", ">= 2.1.4"
+  s.add_runtime_dependency     "amqp", ">= 0.6.7"
+  s.add_runtime_dependency     "bundler", ">= 1.0.13"
   s.add_development_dependency "rake", ">= 0.8.3"
-  s.add_development_dependency "aruba", ">= 0.3.6"
 end

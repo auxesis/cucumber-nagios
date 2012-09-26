@@ -12,7 +12,7 @@ Feature: Examining files
 
   @steps
   Scenario: File exists
-    Given the empty file "foo.file"
+    Given an empty file named "foo.file"
      Then the file "foo.file" exists
 
   @steps
@@ -21,18 +21,18 @@ Feature: Examining files
 
   @steps
   Scenario: Atime
-    Given the empty file "foo.file"
-      And we record the a/mtime of "foo.file"
-      And I run "sleep 1"
-      And I run "touch -a foo.file"
+    Given an empty file named "foo.file"
+      And we record the a-mtime of "foo.file"
+      And I run `sleep 1`
+      And I run `touch -a foo.file`
      Then the atime of "foo.file" changes
 
   @steps
   Scenario: Mtime
     Given an empty file named "foo.file"
-      And we record the a/mtime of "foo.file"
-      And I run "sleep 1"
-      And I run "touch -m foo.file"
+      And we record the a-mtime of "foo.file"
+      And I run `sleep 1`
+      And I run `touch -m foo.file`
      Then the mtime of "foo.file" changes
 
   @steps
@@ -60,14 +60,14 @@ Feature: Examining files
     """
   @steps
   Scenario: File modes
-    When I run "touch filemode.file"
-     And I run "chmod 644 filemode.file"
-    Then the file "filemode.file" has mode "644"
-     And the file "filemode.file" has mode "0644"
+    When I run `touch filemode.file`
+     And I run `chmod 644 filemode.file`
+    Then the file "filemode.file" has decimal mode "644"
+     And the file "filemode.file" has decimal mode "0644"
 
   @steps
   Scenario: Directory exists
-    When I run "mkdir -p dirtest"
+    When I run `mkdir -p dirtest`
     Then the directory "dirtest" exists
 
   @steps
@@ -76,9 +76,9 @@ Feature: Examining files
 
   @steps
   Scenario: Directory mode
-    When I run "mkdir -p dirtest"
-     And I run "chmod 755 dirtest"
-     Then the directory "dirtest" has mode "755"
-     And the directory "dirtest" has mode "0755"
+    When I run `mkdir -p dirtest`
+     And I run `chmod 755 dirtest`
+     Then the directory "dirtest" has decimal mode "755"
+     And the directory "dirtest" has decimal mode "0755"
 
 

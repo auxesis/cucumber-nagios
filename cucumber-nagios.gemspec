@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency     "templater", ">= 1.0.0"
   s.add_runtime_dependency     "net-ssh", "~> 2.2.0"
   s.add_runtime_dependency     "amqp", "= 0.6.7"
-  s.add_runtime_dependency     "bundler", "~> 1.1.5"
+  s.add_runtime_dependency     "bundler", ">= 1.0.7"
   s.add_development_dependency "rake", ">= 0.8.3"
 end

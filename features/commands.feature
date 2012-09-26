@@ -11,15 +11,15 @@ Feature: Executing commands
   I want to use Aruba steps to run commands and test output
 
   Scenario: Check Stdout
-    When I run "echo 'i like cheese'"
+    When I run `echo 'i like cheese'`
     Then the stdout from "echo 'i like cheese'" should contain "i like cheese"
 
   Scenario: Check Stderr
-    When I run "some_error"
-    Then the stderr from "some_error" should contain "No such file or directory - some_error"
+    When I run `sh some_error`
+    Then the stderr should contain "sh: some_error: No such file or directory"
 
   Scenario: Check Stdout for multiple lines
-    When I run "echo 'one\none\none\n'"
+    When I run `echo 'one\none\none\n'`
     Then the output should contain:
     """
     one
@@ -28,10 +28,10 @@ Feature: Executing commands
     """
 
   Scenario: Check exit code
-    When I run "true"
+    When I run `true`
     Then the exit status should be 0
 
   Scenario: Check exit code
-    When I run "false"
+    When I run `false`
     Then the exit status should be 1
 

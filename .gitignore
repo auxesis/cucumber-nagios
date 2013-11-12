@@ -24,9 +24,3 @@ man/*
 
 ## BUNDLER
 .bundle
-
-## RVM
-.rvmrc
-
-## Aruba
-tmp/*

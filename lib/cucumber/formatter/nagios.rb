@@ -13,7 +13,7 @@ module Cucumber
         @start_time = Time.now
       end
 
-      def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
+      def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background, file_colon_line)
         record_result(status, :step_match => step_match, :keyword => keyword)
       end
 
@@ -40,7 +40,7 @@ module Cucumber
       def print_summary
         @total    = @failed.size + @passed.size + @warning.size
         @status   = @failed.size > 0 && "CRITICAL" || @warning.size > 0 && "WARNING" || "OK"
-        @run_time = ((Time.now - @start_time)*100).round/100.0
+        @run_time = (Time.now - @start_time).to_i
 
         service_output   = [ "CUCUMBER #{@status} - Critical: #{@failed.size}",
                              "Warning: #{@warning.size}", "#{@passed.size} okay" ]

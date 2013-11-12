@@ -1,8 +1,9 @@
 When /^I build the gem$/ do
   project_root = Pathname.new(File.dirname(__FILE__)).parent.parent.expand_path
   rakefile     = project_root.join('Rakefile')
-  check_file_presence([rakefile], true)
-  silent_system(unescape("rake -f #{rakefile} build"))
+  File.exist?(rakefile).should be_true
+
+  silent_system("rake -f #{rakefile} build").should be_true
 end
 
 When /^I install the latest gem$/ do
@@ -11,6 +12,20 @@ When /^I install the latest gem$/ do
   glob = File.join(pkg_dir, '*.gem')
   latest = Dir.glob(glob).sort {|a, b| File.ctime(a) <=> File.ctime(b) }.last
 
-  run_simple(unescape("gem install --local --force --ignore-dependencies --no-ri --no-rdoc #{latest}"))
+  silent_system("gem install --local #{latest}").should be_true
+end
+
+Then /^I should have "([^"]*)" on my path$/ do |file|
+  silent_system("which #{file}").should be_true
+end
+
+Then /^I can generate a new project$/ do
+  testproj = "testproj-#{Time.now.to_i}"
+  FileUtils.rm_rf("/tmp/#{testproj}")
+
+  Dir.chdir("/tmp") do
+    silent_system("cucumber-nagios-gen project #{testproj}").should be_true
+  end
+  File.exists?("/tmp/#{testproj}").should be_true
 end
 

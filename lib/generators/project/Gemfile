@@ -1,3 +1,4 @@
 source :rubygems
 
 gem "cucumber-nagios"
+gem "iconv"

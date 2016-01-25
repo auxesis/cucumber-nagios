@@ -4,7 +4,9 @@ module Cucumber
   module Formatter
     class Nagios
 
-      def initialize(step_mother, io, options={})
+      def initialize(step_mother, io, options)
+        @step_mother = step_mother
+        @options = options
         @failed  = []
         @passed  = []
         @warning = []
@@ -13,7 +15,7 @@ module Cucumber
         @start_time = Time.now
       end
 
-      def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background)
+      def after_step_result(keyword, step_match, multiline_arg, status, exception, source_indent, background, scenario_line_num)
         record_result(status, :step_match => step_match, :keyword => keyword)
       end
 
